@@ -54,7 +54,7 @@ void AdjacencyMatrix::generate(int min, int max)
 
 void AdjacencyMatrix::clear()
 {
-    for (std::vector<int> column : m_data) {
+    for (std::vector<int> &column : m_data) {
         std::fill(column.begin(), column.end(), 0);
     }
 }
