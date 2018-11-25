@@ -3,16 +3,16 @@
 std::default_random_engine AdjacencyMatrix::m_randomEngine;
 
 AdjacencyMatrix::AdjacencyMatrix(int size)
-    : m_data(size, std::vector<double>(size, 0.0))
+    : m_data(size, std::vector<int>(size, 0))
 {
 }
 
-const std::vector<double> &AdjacencyMatrix::operator[](int column) const
+const std::vector<int> &AdjacencyMatrix::operator[](int column) const
 {
     return m_data.operator[](column);
 }
 
-std::vector<double> &AdjacencyMatrix::operator[](int column)
+std::vector<int> &AdjacencyMatrix::operator[](int column)
 {
     return m_data.operator[](column);
 }
@@ -35,12 +35,12 @@ bool AdjacencyMatrix::isValid() const
     return true;
 }
 
-void AdjacencyMatrix::generate(double min, double max)
+void AdjacencyMatrix::generate(int min, int max)
 {
     std::uniform_int_distribution<int> connectionDistr(0, 1);
-    std::uniform_real_distribution<double> valueDistr(min, max);
+    std::uniform_int_distribution<int> valueDistr(min, max);
 
-    double value;
+    int value;
     for (int i = 0; i < m_data.size() - 1; i++) {
         for (int j = i + 1; j < m_data.size(); j++) {
             if (connectionDistr(m_randomEngine)) {
@@ -54,7 +54,7 @@ void AdjacencyMatrix::generate(double min, double max)
 
 void AdjacencyMatrix::clear()
 {
-    for (std::vector<double> column : m_data) {
-        std::fill(column.begin(), column.end(), 0.0);
+    for (std::vector<int> column : m_data) {
+        std::fill(column.begin(), column.end(), 0);
     }
 }
