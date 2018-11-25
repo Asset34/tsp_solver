@@ -24,6 +24,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp
+        src/main.cpp \
+    src/ui/mainwindow.cpp \
+    src/adjacencymatrix.cpp
 
-HEADERS +=
+HEADERS += \
+    src/ui/mainwindow.hpp \
+    src/adjacencymatrix.hpp
