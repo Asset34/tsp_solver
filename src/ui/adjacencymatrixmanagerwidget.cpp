@@ -51,6 +51,11 @@ AdjacencyMatrixManagerWidget::AdjacencyMatrixManagerWidget(int size, QWidget *pa
     connect(m_clearButton, &QPushButton::clicked, this, &AdjacencyMatrixManagerWidget::clear);
 }
 
+const AdjacencyMatrix &AdjacencyMatrixManagerWidget::getMatrix() const
+{
+    return m_matrixWidget->getMatrix();
+}
+
 void AdjacencyMatrixManagerWidget::generate()
 {
     m_matrixWidget->generate(GENERATOR_MIN, GENERATOR_MAX);

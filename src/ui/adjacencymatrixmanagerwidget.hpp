@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "adjacencymatrix.hpp"
+
 class QHBoxLayout;
 class QVBoxLayout;
 class QSpinBox;
@@ -15,6 +17,8 @@ class AdjacencyMatrixManagerWidget : public QWidget
 
 public:
     explicit AdjacencyMatrixManagerWidget(int size, QWidget *parent = nullptr);
+
+    const AdjacencyMatrix &getMatrix() const;
 
 public slots:
     void generate();
