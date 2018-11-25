@@ -72,12 +72,20 @@ int AdjacencyMatrixModel::getSize() const
 
 void AdjacencyMatrixModel::generate(int min, int max)
 {
+    beginResetModel();
+
     m_matrix.generate(min, max);
+
+    endResetModel();
 }
 
 void AdjacencyMatrixModel::clear()
 {
+    beginResetModel();
+
     m_matrix.clear();
+
+    endResetModel();
 }
 
 bool AdjacencyMatrixModel::checkBoundaries(const QModelIndex &index) const
