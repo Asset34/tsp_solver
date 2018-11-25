@@ -23,6 +23,10 @@ public slots:
 private:
     AdjacencyMatrixModel *m_model;
 
+private slots:
+    void adjustColumn(const QModelIndex &index);
+    void adjustAll();
+
 };
 
 #endif // ADJACENCYMATRIXWIDGET_HPP

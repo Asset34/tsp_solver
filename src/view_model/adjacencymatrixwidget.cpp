@@ -1,17 +1,19 @@
 #include "adjacencymatrixwidget.hpp"
 
-#include <QHeaderView>
-
 AdjacencyMatrixWidget::AdjacencyMatrixWidget(int size, QWidget *parent)
     : QTableView(parent)
 {
     m_model = new AdjacencyMatrixModel(size, this);
 
     setModel(m_model);
-    horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
+    resizeRowsToContents();
+    resizeColumnsToContents();
     setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
     setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+    connect(m_model, &AdjacencyMatrixModel::dataChanged, this , &AdjacencyMatrixWidget::adjustColumn);
+    connect(m_model, &AdjacencyMatrixModel::modelReset, this, &AdjacencyMatrixWidget::adjustAll);
 }
 
 int AdjacencyMatrixWidget::getSize() const
@@ -37,4 +39,16 @@ void AdjacencyMatrixWidget::generate(int min, int max)
 void AdjacencyMatrixWidget::clear()
 {
     m_model->clear();
+}
+
+void AdjacencyMatrixWidget::adjustColumn(const QModelIndex &index)
+{
+    if (index.isValid()) {
+        resizeColumnToContents(index.column());
+    }
+}
+
+void AdjacencyMatrixWidget::adjustAll()
+{
+    resizeColumnsToContents();
 }
