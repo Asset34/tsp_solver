@@ -42,6 +42,19 @@ QVariant AdjacencyMatrixModel::data(const QModelIndex &index, int role) const
     }
 }
 
+QVariant AdjacencyMatrixModel::headerData(
+        int section,
+        Qt::Orientation orientation,
+        int role
+        ) const
+{
+    if (role != Qt::DisplayRole) {
+        return QVariant();
+    }
+
+    return QString::number(section);
+}
+
 Qt::ItemFlags AdjacencyMatrixModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid()) {
