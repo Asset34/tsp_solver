@@ -35,7 +35,7 @@ bool AdjacencyMatrix::isValid() const
     return true;
 }
 
-void AdjacencyMatrix::generate(int min, int max)
+void AdjacencyMatrix::  generate(int min, int max)
 {
     std::uniform_int_distribution<int> connectionDistr(0, 1);
     std::uniform_int_distribution<int> valueDistr(min, max);
@@ -47,6 +47,10 @@ void AdjacencyMatrix::generate(int min, int max)
                 value = valueDistr(m_randomEngine);
                 m_data[i][j] = value;
                 m_data[j][i] = value;
+            }
+            else {
+                m_data[i][j] = 0;
+                m_data[j][i] = 0;
             }
         }
     }
