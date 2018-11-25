@@ -23,8 +23,9 @@ public:
     const AdjacencyMatrix &getMatrix() const;
 
     void setSize(int size);
+    int getSize() const;
 
-    void generate(double min, double max);
+    void generate(int min, int max);
     void clear();
 
 private:

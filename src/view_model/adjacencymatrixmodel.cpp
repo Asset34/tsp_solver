@@ -22,19 +22,24 @@ bool AdjacencyMatrixModel::setData(const QModelIndex &index, const QVariant &val
         return false;
     }
 
-    m_matrix[index.column()][index.row()] = value.toDouble();
+    m_matrix[index.column()][index.row()] = value.toInt();
     emit dataChanged(index, index, {role});
 
     return true;
 }
 
-QVariant AdjacencyMatrixModel::data(const QModelIndex &index, int /*role*/) const
+QVariant AdjacencyMatrixModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid() || !checkBoundaries(index)) {
         return QVariant();
     }
 
-    return m_matrix[index.column()][index.row()];
+    if (role == Qt::DisplayRole) {
+        return m_matrix[index.column()][index.row()];
+    }
+    else {
+        return QVariant();
+    }
 }
 
 Qt::ItemFlags AdjacencyMatrixModel::flags(const QModelIndex &index) const
@@ -43,7 +48,7 @@ Qt::ItemFlags AdjacencyMatrixModel::flags(const QModelIndex &index) const
         return Qt::ItemIsEnabled;
     }
 
-    return QAbstractTableModel::flags(index);
+    return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
 }
 
 const AdjacencyMatrix &AdjacencyMatrixModel::getMatrix() const
@@ -65,7 +70,7 @@ int AdjacencyMatrixModel::getSize() const
     return m_matrix.getSize();
 }
 
-void AdjacencyMatrixModel::generate(double min, double max)
+void AdjacencyMatrixModel::generate(int min, int max)
 {
     m_matrix.generate(min, max);
 }
