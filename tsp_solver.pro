@@ -26,8 +26,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         src/main.cpp \
     src/ui/mainwindow.cpp \
-    src/adjacencymatrix.cpp
+    src/adjacencymatrix.cpp \
+    src/view_model/adjacencymatrixmodel.cpp \
+    src/view_model/adjacencymatrixwidget.cpp \
+    src/ui/adjacencymatrixmanagerwidget.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
-    src/adjacencymatrix.hpp
+    src/adjacencymatrix.hpp \
+    src/view_model/adjacencymatrixmodel.hpp \
+    src/view_model/adjacencymatrixwidget.hpp \
+    src/ui/adjacencymatrixmanagerwidget.hpp
+
+INCLUDEPATH += $$PWD/src
