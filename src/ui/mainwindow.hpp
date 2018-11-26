@@ -7,7 +7,7 @@
 #include <QVBoxLayout>
 
 #include <QFrame>
-
+#include <QLabel>
 #include <QPushButton>
 
 #include "ui/adjacencymatrixmanagerwidget.hpp"
@@ -21,12 +21,16 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
 
 private:
+    void setStatus(const QString &text);
+
     QHBoxLayout *m_mainlayout;
     QVBoxLayout *m_algorithmLayout;
 
     QPushButton *m_solveButton;
 
     QFrame *m_separator;
+
+    QLabel *m_statusLabel;
 
     AdjacencyMatrixManagerWidget *m_matrixWidget;
     AlgorithmWidget *m_algorithmWidget;

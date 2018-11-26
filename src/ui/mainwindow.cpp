@@ -1,5 +1,7 @@
 #include "mainwindow.hpp"
 
+#include <QStatusBar>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -29,6 +31,12 @@ MainWindow::MainWindow(QWidget *parent)
     m_mainlayout->addWidget(m_matrixWidget, 2);
     m_mainlayout->addLayout(m_algorithmLayout, 1);
 
+    // Create status bar label
+    m_statusLabel = new QLabel;
+
+    // Create status bar
+    statusBar()->addPermanentWidget(m_statusLabel);
+
     // Create window
     QWidget *centralWidget = new QWidget;
     centralWidget->setLayout(m_mainlayout);
@@ -39,15 +47,26 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_solveButton, &QPushButton::clicked, this, &MainWindow::solve);
 }
 
+void MainWindow::setStatus(const QString &text)
+{
+    m_statusLabel->setText(text);
+}
+
 void MainWindow::solve()
 {
     AdjacencyMatrix matrix = m_matrixWidget->getMatrix();
     if (!matrix.isValid()) {
+        setStatus("Invalud graph");
+
         return;
     }
 
     bool result = m_algorithmWidget->solve(matrix);
-    if (result) {
+    if (!result) {
+        setStatus("Invalid result");
+
         return;
     }
+
+    setStatus("Success");
 }
