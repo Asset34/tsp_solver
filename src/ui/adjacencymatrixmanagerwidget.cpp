@@ -12,7 +12,7 @@ AdjacencyMatrixManagerWidget::AdjacencyMatrixManagerWidget(int size, QWidget *pa
 {
     // Create size spin box
     m_sizeSpinBox = new QSpinBox;
-    m_sizeSpinBox->setRange(0, 10000);
+    m_sizeSpinBox->setRange(3, 1000);
     m_sizeSpinBox->setValue(size);
 
     // Create buttons
