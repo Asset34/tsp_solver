@@ -2,7 +2,6 @@
 #define ADJACENCYMATRIX_HPP
 
 #include <vector>
-#include <random>
 
 class AdjacencyMatrix
 {
@@ -17,12 +16,12 @@ public:
     bool isValid() const;
 
     void generate(int min, int max);
+    void generateHamiltonian(int min, int max);
+
     void clear();
 
 private:
     std::vector<std::vector<int>> m_data;
-
-    static std::default_random_engine m_randomEngine;
 
 };
 

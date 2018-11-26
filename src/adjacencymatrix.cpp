@@ -1,6 +1,8 @@
 #include "adjacencymatrix.hpp"
 
-std::default_random_engine AdjacencyMatrix::m_randomEngine;
+#include <cmath>
+
+#include "utills/randomgenerator.hpp"
 
 AdjacencyMatrix::AdjacencyMatrix(int size)
     : m_data(size, std::vector<int>(size, 0))
@@ -35,22 +37,51 @@ bool AdjacencyMatrix::isValid() const
     return true;
 }
 
-void AdjacencyMatrix::  generate(int min, int max)
+void AdjacencyMatrix::generate(int min, int max)
 {
-    std::uniform_int_distribution<int> connectionDistr(0, 1);
-    std::uniform_int_distribution<int> valueDistr(min, max);
-
     int value;
     for (int i = 0; i < m_data.size() - 1; i++) {
         for (int j = i + 1; j < m_data.size(); j++) {
-            if (connectionDistr(m_randomEngine)) {
-                value = valueDistr(m_randomEngine);
+            if (RandomGenerator::generateBool()) {
+                value = RandomGenerator::generateInt(min, max);
+
                 m_data[i][j] = value;
                 m_data[j][i] = value;
             }
             else {
                 m_data[i][j] = 0;
                 m_data[j][i] = 0;
+            }
+        }
+    }
+}
+
+void AdjacencyMatrix::generateHamiltonian(int min, int max)
+{
+    clear();
+
+    // Generate hamilton cycle
+    std::vector<int> hamiltonCycle = RandomGenerator::generateCombination(0, m_data.size() - 1);
+    hamiltonCycle.push_back(hamiltonCycle.front());
+
+    int value;
+
+    // Set hamilton cycle to matrix
+    for (int i = 1; i < hamiltonCycle.size(); i++) {
+        value = RandomGenerator::generateInt(min, max);
+
+        m_data[hamiltonCycle[i]][hamiltonCycle[i - 1]] = value;
+        m_data[hamiltonCycle[i - 1]][hamiltonCycle[i]] = value;
+    }
+
+    // Generate other
+    for (int i = 0; i < m_data.size() - 1; i++) {
+        for (int j = i + 1; j < m_data.size(); j++) {
+            if (!m_data[i][j] && RandomGenerator::generateBool()) {
+                value = RandomGenerator::generateInt(min, max);
+
+                m_data[i][j] = value;
+                m_data[j][i] = value;
             }
         }
     }
