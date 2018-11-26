@@ -20,7 +20,7 @@ int RandomGenerator::generateInt(int min, int max)
     return std::uniform_int_distribution<int>{min, max}(m_engine);
 }
 
-std::vector<int> RandomGenerator::generateCombination(int min, int max, int count)
+std::vector<int> RandomGenerator::generateCombination(int min, int max)
 {
     // Create range vector
     std::vector<int> values(max - min + 1);
@@ -30,7 +30,6 @@ std::vector<int> RandomGenerator::generateCombination(int min, int max, int coun
 
     // Generate
     std::shuffle(values.begin(), values.end(), m_engine);
-    values.resize(count);
 
     return values;
 }
