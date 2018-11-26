@@ -4,8 +4,12 @@
 #include <QMainWindow>
 
 #include <QHBoxLayout>
+#include <QVBoxLayout>
+
+#include <QPushButton>
 
 #include "ui/adjacencymatrixmanagerwidget.hpp"
+#include "ui/algorithmwidget.hpp"
 
 class MainWindow : public QMainWindow
 {
@@ -16,8 +20,15 @@ public:
 
 private:
     QHBoxLayout *m_mainlayout;
+    QVBoxLayout *m_algorithmLayout;
+
+    QPushButton *m_solveButton;
 
     AdjacencyMatrixManagerWidget *m_matrixWidget;
+    AlgorithmWidget *m_algorithmWidget;
+
+private slots:
+    void solve();
 
 };
 
