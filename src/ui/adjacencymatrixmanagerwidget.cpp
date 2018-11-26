@@ -40,7 +40,6 @@ AdjacencyMatrixManagerWidget::AdjacencyMatrixManagerWidget(int size, QWidget *pa
 
     // Create
     setLayout(m_mainLayout);
-    setContentsMargins(5, 5, 5, 5);
 
     // Create
     connect(
@@ -71,7 +70,7 @@ void AdjacencyMatrixManagerWidget::generate()
 
 void AdjacencyMatrixManagerWidget::generateHamiltonian()
 {
-    m_matrixWidget->generate(GENERATOR_MIN, GENERATOR_MAX);
+    m_matrixWidget->generateHamiltonian(GENERATOR_MIN, GENERATOR_MAX);
 }
 
 void AdjacencyMatrixManagerWidget::clear()
