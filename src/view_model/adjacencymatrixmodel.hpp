@@ -28,6 +28,7 @@ public:
     int getSize() const;
 
     void generate(int min, int max);
+    void generateHamiltonian(int min, int max);
     void clear();
 
 private:

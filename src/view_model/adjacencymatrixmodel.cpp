@@ -92,6 +92,15 @@ void AdjacencyMatrixModel::generate(int min, int max)
     endResetModel();
 }
 
+void AdjacencyMatrixModel::generateHamiltonian(int min, int max)
+{
+    beginResetModel();
+
+    m_matrix.generateHamiltonian(min, max);
+
+    endResetModel();
+}
+
 void AdjacencyMatrixModel::clear()
 {
     beginResetModel();

@@ -22,6 +22,7 @@ public:
 
 public slots:
     void generate();
+    void generateHamiltonian();
     void clear();
 
 private:
@@ -34,6 +35,7 @@ private:
     QSpinBox *m_sizeSpinBox;
 
     QPushButton *m_generateButton;
+    QPushButton *m_generateHamiltonianButton;
     QPushButton *m_clearButton;
 
     AdjacencyMatrixWidget *m_matrixWidget;

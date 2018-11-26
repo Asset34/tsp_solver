@@ -36,6 +36,11 @@ void AdjacencyMatrixWidget::generate(int min, int max)
     m_model->generate(min, max);
 }
 
+void AdjacencyMatrixWidget::generateHamiltonian(int min, int max)
+{
+    m_model->generateHamiltonian(min, max);
+}
+
 void AdjacencyMatrixWidget::clear()
 {
     m_model->clear();
