@@ -77,6 +77,8 @@ TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matri
         return {false, m_length, m_cycle};
     }
 
+    m_cycle.push_back(start);
+
     return {true, m_length, m_cycle};
 }
 
