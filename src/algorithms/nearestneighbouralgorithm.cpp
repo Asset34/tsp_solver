@@ -7,41 +7,6 @@
 
 #include "utills/randomgenerator.hpp"
 
-//std::vector<int> NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matrix)
-//{
-//    m_matrix = matrix;
-
-//    // Build targets
-//    for (int i = 0; i < m_matrix.getSize(); i++) {
-//        m_targets.insert(i);
-//    }
-
-//    // Choose start vertex
-//    int startVertex = RandomGenerator::generateInt(0, m_targets.size() - 1);
-//    addToCycle(startVertex);
-
-//    // Find cycle
-//    int curVertex = startVertex;
-//    int nextVertex;
-//    while (!m_targets.empty()) {
-//        nextVertex = findNearest(curVertex);
-
-//        if (nextVertex < 0) {
-//            return m_cycle;
-//        }
-
-//        addToCycle(nextVertex);
-//        curVertex = nextVertex;
-//    }
-
-//    // Try return to the start vertex
-//    if (!isConnected(curVertex, startVertex)) {
-//        return m_cycle;
-//    }
-
-//    return m_cycle;
-//}
-
 TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matrix)
 {
     m_matrix = &matrix;
@@ -142,33 +107,3 @@ bool NearestNeighbourAlgorithm::isVisited(int vertex) const
 
     return false;
 }
-
-
-//int NearestNeighbourAlgorithm::findNearest(
-//        int curVertex,
-//        std::vector<int> &targets,
-//        const AdjacencyMatrix &matrix
-//        ) const
-//{
-//    // Create map of edges
-//    EdgeMap edges;
-//    for (int i = 0; i < matrix.size(); i++) {
-//        if (isConnected(curVertex, i, matrix) && !isVisited(i, targets)) {
-//            edges.insert(Edge(i, matrix[curVertex][i]));
-//        }
-//    }
-
-//    if (edges.empty()) {
-//        return -1;
-//    }
-
-//    // Find edge with minimum weight
-//    Edge minEdge = *std::min_element(
-//                edges.begin(),
-//                edges.end(),
-//                [](Edge e1, Edge e2) -> bool {
-//            return e1.second < e2.second;
-//    });
-
-//    return minEdge.first;
-//}
