@@ -38,6 +38,7 @@ HEADERS += \
     src/view_model/adjacencymatrixmodel.hpp \
     src/view_model/adjacencymatrixwidget.hpp \
     src/ui/adjacencymatrixmanagerwidget.hpp \
-    src/utills/randomgenerator.hpp
+    src/utills/randomgenerator.hpp \
+    src/algorithms/tspalgorithm.hpp
 
 INCLUDEPATH += $$PWD/src
