@@ -12,10 +12,15 @@ MainWindow::MainWindow(QWidget *parent)
     // Create solve button
     m_solveButton = new QPushButton("Solve");
 
+    // Create separator
+    m_separator = new QFrame;
+    m_separator->setFrameShape(QFrame::Shape::HLine);
+
     // Create algorithm layout
     m_algorithmLayout = new QVBoxLayout;
     m_algorithmLayout->setContentsMargins(0, 0, 0, 0);
     m_algorithmLayout->addWidget(m_solveButton);
+    m_algorithmLayout->addWidget(m_separator);
     m_algorithmLayout->addWidget(m_algorithmWidget);
 
     // Create main layout

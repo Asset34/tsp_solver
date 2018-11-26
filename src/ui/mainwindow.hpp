@@ -6,6 +6,8 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
+#include <QFrame>
+
 #include <QPushButton>
 
 #include "ui/adjacencymatrixmanagerwidget.hpp"
@@ -23,6 +25,8 @@ private:
     QVBoxLayout *m_algorithmLayout;
 
     QPushButton *m_solveButton;
+
+    QFrame *m_separator;
 
     AdjacencyMatrixManagerWidget *m_matrixWidget;
     AlgorithmWidget *m_algorithmWidget;
