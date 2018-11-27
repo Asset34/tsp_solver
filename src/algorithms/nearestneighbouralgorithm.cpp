@@ -38,6 +38,7 @@ TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matri
     }
 
     m_cycle.push_back(start);
+    m_length += (*m_matrix)[cur][start];
 
     return {true, m_length, m_cycle};
 }
