@@ -42,6 +42,11 @@ AlgorithmWidget::AlgorithmWidget(QWidget *parent)
     setLayout(m_mainLayout);
 }
 
+AlgorithmWidget::~AlgorithmWidget()
+{
+    delete m_algorithm;
+}
+
 bool AlgorithmWidget::solve(const AdjacencyMatrix &matrix)
 {
     resetAlgorithm();
