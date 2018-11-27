@@ -9,7 +9,8 @@ class RandomGenerator
 public:
     static bool generateBool();
     static int generateInt(int min, int max);
-    static std::vector<int> generateCombination(int min, int max);
+    static std::vector<int> generateSet(int count, int min, int max);
+    static bool generateAction(double chance);
 
 private:
     static std::default_random_engine m_engine;
