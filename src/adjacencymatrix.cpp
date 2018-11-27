@@ -75,7 +75,7 @@ void AdjacencyMatrix::generateHamiltonian(int min, int max)
     clear();
 
     // Generate hamilton cycle
-    std::vector<int> hamiltonCycle = RandomGenerator::generateCombination(0, m_data.size() - 1);
+    std::vector<int> hamiltonCycle = RandomGenerator::generateSet(0, 0, m_data.size() - 1);
     hamiltonCycle.push_back(hamiltonCycle.front());
 
     int value;
