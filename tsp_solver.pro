@@ -32,7 +32,8 @@ SOURCES += \
     src/ui/adjacencymatrixmanagerwidget.cpp \
     src/utills/randomgenerator.cpp \
     src/algorithms/nearestneighbouralgorithm.cpp \
-    src/ui/algorithmwidget.cpp
+    src/ui/algorithmwidget.cpp \
+    src/algorithms/simulatedannealingalgorithm.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -43,6 +44,7 @@ HEADERS += \
     src/utills/randomgenerator.hpp \
     src/algorithms/tspalgorithm.hpp \
     src/algorithms/nearestneighbouralgorithm.hpp \
-    src/ui/algorithmwidget.hpp
+    src/ui/algorithmwidget.hpp \
+    src/algorithms/simulatedannealingalgorithm.hpp
 
 INCLUDEPATH += $$PWD/src

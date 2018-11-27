@@ -7,6 +7,7 @@
 #include <QTextEdit>
 
 #include "algorithms/nearestneighbouralgorithm.hpp"
+#include "algorithms/simulatedannealingalgorithm.hpp"
 
 AlgorithmWidget::AlgorithmWidget(QWidget *parent)
     : QWidget(parent),
@@ -15,6 +16,7 @@ AlgorithmWidget::AlgorithmWidget(QWidget *parent)
     // Create algorithm combo box
     m_algorithmComboBox = new QComboBox;
     m_algorithmComboBox->addItem(QString::fromStdString(NearestNeighbourAlgorithm().getName()));
+    m_algorithmComboBox->addItem(QString::fromStdString(SimulatedAnnealingAlgorithm().getName()));
 
     // Create length label
     m_lengthLabel = new QLabel;
@@ -79,7 +81,10 @@ void AlgorithmWidget::resetAlgorithm()
     int row = m_algorithmComboBox->currentIndex();
     switch (row) {
         case 0:
-        m_algorithm = new NearestNeighbourAlgorithm;
+            m_algorithm = new NearestNeighbourAlgorithm;
+        break;
+        case 1:
+            m_algorithm = new SimulatedAnnealingAlgorithm;
         break;
     }
 }

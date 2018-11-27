@@ -56,7 +56,7 @@ void MainWindow::solve()
 {
     AdjacencyMatrix matrix = m_matrixWidget->getMatrix();
     if (!matrix.isValid()) {
-        setStatus("Invalud graph");
+        setStatus("Invalid graph");
 
         return;
     }
