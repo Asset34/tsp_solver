@@ -19,6 +19,7 @@ class AlgorithmWidget : public QWidget
 
 public:
     explicit AlgorithmWidget(QWidget *parent = nullptr);
+    virtual ~AlgorithmWidget();
 
 public slots:
     bool solve(const AdjacencyMatrix &matrix);
