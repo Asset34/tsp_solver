@@ -19,6 +19,7 @@ AdjacencyMatrixManagerWidget::AdjacencyMatrixManagerWidget(int size, QWidget *pa
     m_generateButton = new QPushButton("Generate");
     m_clearButton = new QPushButton("Clear");
     m_generateHamiltonianButton = new QPushButton("Generate \n Hamiltonian");
+    m_generateCompleteButton = new QPushButton("Generate \n complete");
 
     // Create
     m_controlLayout = new QVBoxLayout;
@@ -26,6 +27,7 @@ AdjacencyMatrixManagerWidget::AdjacencyMatrixManagerWidget(int size, QWidget *pa
     m_controlLayout->addWidget(m_sizeSpinBox);
     m_controlLayout->addWidget(m_generateButton);
     m_controlLayout->addWidget(m_generateHamiltonianButton);
+    m_controlLayout->addWidget(m_generateCompleteButton);
     m_controlLayout->addWidget(m_clearButton);
     m_controlLayout->addStretch(1);
 
@@ -55,6 +57,12 @@ AdjacencyMatrixManagerWidget::AdjacencyMatrixManagerWidget(int size, QWidget *pa
         this,
         &AdjacencyMatrixManagerWidget::generateHamiltonian
         );
+    connect(
+        m_generateCompleteButton,
+        &QPushButton::clicked,
+        this,
+        &AdjacencyMatrixManagerWidget::generateComplete
+        );
     connect(m_clearButton, &QPushButton::clicked, this, &AdjacencyMatrixManagerWidget::clear);
 }
 
@@ -71,6 +79,11 @@ void AdjacencyMatrixManagerWidget::generate()
 void AdjacencyMatrixManagerWidget::generateHamiltonian()
 {
     m_matrixWidget->generateHamiltonian(GENERATOR_MIN, GENERATOR_MAX);
+}
+
+void AdjacencyMatrixManagerWidget::generateComplete()
+{
+    m_matrixWidget->generateComplete(GENERATOR_MIN, GENERATOR_MAX);
 }
 
 void AdjacencyMatrixManagerWidget::clear()

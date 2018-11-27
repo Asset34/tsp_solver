@@ -29,6 +29,7 @@ public:
 
     void generate(int min, int max);
     void generateHamiltonian(int min, int max);
+    void generateComplete(int min, int max);
     void clear();
 
 private:
