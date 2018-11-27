@@ -21,8 +21,8 @@ public:
     const AdjacencyMatrix &getMatrix() const;
 
 public slots:
-    void generate();
-    void generateHamiltonian();
+//    void generate();
+//    void generateHamiltonian();
     void generateComplete();
     void clear();
 
@@ -35,8 +35,8 @@ private:
 
     QSpinBox *m_sizeSpinBox;
 
-    QPushButton *m_generateButton;
-    QPushButton *m_generateHamiltonianButton;
+//    QPushButton *m_generateButton;
+//    QPushButton *m_generateHamiltonianButton;
     QPushButton *m_generateCompleteButton;
     QPushButton *m_clearButton;
 

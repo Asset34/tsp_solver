@@ -17,8 +17,8 @@ public:
 
 public slots:
     void setSize(int size);
-    void generate(int min, int max);
-    void generateHamiltonian(int min, int max);
+//    void generate(int min, int max);
+//    void generateHamiltonian(int min, int max);
     void generateComplete(int min, int max);
     void clear();
 

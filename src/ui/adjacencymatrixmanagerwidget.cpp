@@ -16,17 +16,17 @@ AdjacencyMatrixManagerWidget::AdjacencyMatrixManagerWidget(int size, QWidget *pa
     m_sizeSpinBox->setValue(size);
 
     // Create buttons
-    m_generateButton = new QPushButton("Generate");
-    m_clearButton = new QPushButton("Clear");
-    m_generateHamiltonianButton = new QPushButton("Generate \n Hamiltonian");
+//    m_generateButton = new QPushButton("Generate");
+//    m_generateHamiltonianButton = new QPushButton("Generate \n Hamiltonian");
     m_generateCompleteButton = new QPushButton("Generate \n complete");
+    m_clearButton = new QPushButton("Clear");
 
     // Create
     m_controlLayout = new QVBoxLayout;
     m_controlLayout->setContentsMargins(0, 0, 0, 0);
     m_controlLayout->addWidget(m_sizeSpinBox);
-    m_controlLayout->addWidget(m_generateButton);
-    m_controlLayout->addWidget(m_generateHamiltonianButton);
+//    m_controlLayout->addWidget(m_generateButton);
+//    m_controlLayout->addWidget(m_generateHamiltonianButton);
     m_controlLayout->addWidget(m_generateCompleteButton);
     m_controlLayout->addWidget(m_clearButton);
     m_controlLayout->addStretch(1);
@@ -50,13 +50,13 @@ AdjacencyMatrixManagerWidget::AdjacencyMatrixManagerWidget(int size, QWidget *pa
         m_matrixWidget,
         &AdjacencyMatrixWidget::setSize
         );
-    connect(m_generateButton, &QPushButton::clicked, this, &AdjacencyMatrixManagerWidget::generate);
-    connect(
-        m_generateHamiltonianButton,
-        &QPushButton::clicked,
-        this,
-        &AdjacencyMatrixManagerWidget::generateHamiltonian
-        );
+//    connect(m_generateButton, &QPushButton::clicked, this, &AdjacencyMatrixManagerWidget::generate);
+//    connect(
+//        m_generateHamiltonianButton,
+//        &QPushButton::clicked,
+//        this,
+//        &AdjacencyMatrixManagerWidget::generateHamiltonian
+//        );
     connect(
         m_generateCompleteButton,
         &QPushButton::clicked,
@@ -71,15 +71,15 @@ const AdjacencyMatrix &AdjacencyMatrixManagerWidget::getMatrix() const
     return m_matrixWidget->getMatrix();
 }
 
-void AdjacencyMatrixManagerWidget::generate()
-{
-    m_matrixWidget->generate(GENERATOR_MIN, GENERATOR_MAX);
-}
+//void AdjacencyMatrixManagerWidget::generate()
+//{
+//    m_matrixWidget->generate(GENERATOR_MIN, GENERATOR_MAX);
+//}
 
-void AdjacencyMatrixManagerWidget::generateHamiltonian()
-{
-    m_matrixWidget->generateHamiltonian(GENERATOR_MIN, GENERATOR_MAX);
-}
+//void AdjacencyMatrixManagerWidget::generateHamiltonian()
+//{
+//    m_matrixWidget->generateHamiltonian(GENERATOR_MIN, GENERATOR_MAX);
+//}
 
 void AdjacencyMatrixManagerWidget::generateComplete()
 {

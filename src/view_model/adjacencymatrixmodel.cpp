@@ -83,23 +83,23 @@ int AdjacencyMatrixModel::getSize() const
     return m_matrix.getSize();
 }
 
-void AdjacencyMatrixModel::generate(int min, int max)
-{
-    beginResetModel();
+//void AdjacencyMatrixModel::generate(int min, int max)
+//{
+//    beginResetModel();
 
-    m_matrix.generate(min, max);
+//    m_matrix.generate(min, max);
 
-    endResetModel();
-}
+//    endResetModel();
+//}
 
-void AdjacencyMatrixModel::generateHamiltonian(int min, int max)
-{
-    beginResetModel();
+//void AdjacencyMatrixModel::generateHamiltonian(int min, int max)
+//{
+//    beginResetModel();
 
-    m_matrix.generateHamiltonian(min, max);
+//    m_matrix.generateHamiltonian(min, max);
 
-    endResetModel();
-}
+//    endResetModel();
+//}
 
 void AdjacencyMatrixModel::generateComplete(int min, int max)
 {
