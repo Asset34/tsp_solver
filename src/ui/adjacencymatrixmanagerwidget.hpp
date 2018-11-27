@@ -27,7 +27,7 @@ public slots:
     void clear();
 
 private:
-    const int GENERATOR_MIN = 0;
+    const int GENERATOR_MIN = 1;
     const int GENERATOR_MAX = 100;
 
     QHBoxLayout *m_mainLayout;
