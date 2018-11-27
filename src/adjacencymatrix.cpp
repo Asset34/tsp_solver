@@ -37,6 +37,20 @@ bool AdjacencyMatrix::isValid() const
     return true;
 }
 
+bool AdjacencyMatrix::isComplete() const
+{
+    for (int i = 0; i < m_data.size() - 1; i++) {
+        for (int j = i + 1; j < m_data.size(); j++) {
+            if (m_data[i][j] != m_data[i][j] ||
+                m_data[i][j] <= 0) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 void AdjacencyMatrix::generate(int min, int max)
 {
     int value;
@@ -83,6 +97,19 @@ void AdjacencyMatrix::generateHamiltonian(int min, int max)
                 m_data[i][j] = value;
                 m_data[j][i] = value;
             }
+        }
+    }
+}
+
+void AdjacencyMatrix::generateComplete(int min, int max)
+{
+    int value;
+    for (int i = 0; i < m_data.size() - 1; i++) {
+        for (int j = i + 1; j < m_data.size(); j++) {
+                value = RandomGenerator::generateInt(min, max);
+
+                m_data[i][j] = value;
+                m_data[j][i] = value;
         }
     }
 }
