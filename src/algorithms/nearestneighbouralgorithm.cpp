@@ -37,11 +37,6 @@ TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matri
         cur = next;
     }
 
-    // Finish hamiltom cycle
-    if (!isConnected(cur, start)) {
-        return {false, m_length, m_cycle};
-    }
-
     m_cycle.push_back(start);
 
     return {true, m_length, m_cycle};
@@ -64,7 +59,7 @@ int NearestNeighbourAlgorithm::findNearest(int curVertex) const
     // Create map of edges
     EdgeMap edges;
     for (int i = 0; i < m_matrix->getSize(); i++) {
-        if (isConnected(curVertex, i) && !isVisited(i)) {
+        if (!isVisited(i)) {
             edges.insert(Edge(i, (*m_matrix)[curVertex][i]));
         }
     }
@@ -88,15 +83,6 @@ void NearestNeighbourAlgorithm::addToCycle(int vertex)
 {
     m_vertexes.erase(vertex);
     m_cycle.push_back(vertex);
-}
-
-bool NearestNeighbourAlgorithm::isConnected(int vertex1, int vertex2) const
-{
-    if ((*m_matrix)[vertex1][vertex2] > 0) {
-        return true;
-    }
-
-    return false;
 }
 
 bool NearestNeighbourAlgorithm::isVisited(int vertex) const

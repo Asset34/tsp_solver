@@ -19,7 +19,6 @@ private:
 
     void addToCycle(int vertex);
 
-    bool isConnected(int vertex1, int vertex2) const;
     bool isVisited(int vertex) const;
 
     // Processing containers
