@@ -26,11 +26,19 @@ int AdjacencyMatrix::getSize() const
 
 bool AdjacencyMatrix::isValid() const
 {
+    // Check edges
     for (int i = 0; i < m_data.size(); i++) {
         for (int j = 0; j < m_data.size(); j++) {
             if (m_data[i][j] != m_data[j][i]) {
                 return false;
             }
+        }
+    }
+
+    // Check loops
+    for (int i = 0; i < m_data.size(); i++) {
+        if (m_data[i][i]) {
+            return false;
         }
     }
 
