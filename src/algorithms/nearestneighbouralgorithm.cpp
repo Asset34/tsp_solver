@@ -7,7 +7,7 @@
 
 #include "utills/randomgenerator.hpp"
 
-TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matrix)
+TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matrix, const Parameters &p)
 {
     m_matrix = &matrix;
 
@@ -20,25 +20,25 @@ TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matri
 
     // Choose start vertex
     int cur = RandomGenerator::generateInt(0, m_vertexes.size() - 1);
-    addToTour(cur);
+    addToTour(cur, p);
 
     // Find tour
     int next;
     int iterations = 0;
-    while (!m_vertexes.empty()) {
-        next = findNearest(cur);
+    while (!m_vertexes.empty() && iterations < p.maxIterations) {
+        next = findNearest(cur, p);
         if (next < 0) {
-            return {false, computeLength(m_tour), iterations, m_tour};
+            return {false, computeLength(m_tour, p), iterations, m_tour};
         }
 
-        addToTour(next);
+        addToTour(next, p);
         cur = next;
 
         iterations++;
     }
     m_tour.push_back(m_tour.front());
 
-    return {true, computeLength(m_tour), iterations, m_tour};
+    return {true, computeLength(m_tour, p), iterations, m_tour};
 }
 
 std::string NearestNeighbourAlgorithm::getName() const
@@ -52,7 +52,7 @@ void NearestNeighbourAlgorithm::clear()
     m_tour.clear();
 }
 
-bool NearestNeighbourAlgorithm::isVisited(int vertex) const
+bool NearestNeighbourAlgorithm::isVisited(int vertex, const Parameters &p) const
 {
     if (m_vertexes.find(vertex) == m_vertexes.end()) {
         return true;
@@ -62,12 +62,12 @@ bool NearestNeighbourAlgorithm::isVisited(int vertex) const
 }
 
 
-int NearestNeighbourAlgorithm::findNearest(int vertex) const
+int NearestNeighbourAlgorithm::findNearest(int vertex, const Parameters &p) const
 {
     // Create map of edges
     EdgeMap edges;
     for (int i = 0; i < m_matrix->getSize(); i++) {
-        if (!isVisited(i)) {
+        if (!isVisited(i, p)) {
             edges.insert(Edge(i, (*m_matrix)[vertex][i]));
         }
     }
@@ -87,13 +87,13 @@ int NearestNeighbourAlgorithm::findNearest(int vertex) const
     return minEdge.first;
 }
 
-void NearestNeighbourAlgorithm::addToTour(int vertex)
+void NearestNeighbourAlgorithm::addToTour(int vertex, const Parameters &p)
 {
     m_vertexes.erase(vertex);
     m_tour.push_back(vertex);
 }
 
-int NearestNeighbourAlgorithm::computeLength(const Tour &tour) const
+int NearestNeighbourAlgorithm::computeLength(const Tour &tour, const Parameters &p) const
 {
     int length = 0;
     for (int i = 1; i < tour.size(); i++) {

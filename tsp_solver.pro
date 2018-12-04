@@ -33,7 +33,10 @@ SOURCES += \
     src/utills/randomgenerator.cpp \
     src/algorithms/nearestneighbouralgorithm.cpp \
     src/ui/algorithmwidget.cpp \
-    src/algorithms/simulatedannealingalgorithm.cpp
+    src/algorithms/simulatedannealingalgorithm.cpp \
+    src/ui/parameterswidget.cpp \
+    src/ui/nearestneighbourparameterswidget.cpp \
+    src/ui/simulatedannealingparameterswidget.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -45,6 +48,9 @@ HEADERS += \
     src/algorithms/tspalgorithm.hpp \
     src/algorithms/nearestneighbouralgorithm.hpp \
     src/ui/algorithmwidget.hpp \
-    src/algorithms/simulatedannealingalgorithm.hpp
+    src/algorithms/simulatedannealingalgorithm.hpp \
+    src/ui/parameterswidget.hpp \
+    src/ui/nearestneighbourparameterswidget.hpp \
+    src/ui/simulatedannealingparameterswidget.hpp
 
 INCLUDEPATH += $$PWD/src

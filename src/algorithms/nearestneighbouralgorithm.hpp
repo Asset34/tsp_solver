@@ -9,17 +9,18 @@
 class NearestNeighbourAlgorithm : public TspAlgorithm
 {
 public:
-    virtual Result run(const AdjacencyMatrix &matrix) override;
+    virtual Result run(const AdjacencyMatrix &matrix, const Parameters &p) override;
     virtual std::string getName() const override;
 
 private:
     void clear();
 
-    bool isVisited(int vertex) const;
+    bool stopCritetion(const Parameters &p) const;
+    bool isVisited(int vertex, const Parameters &p) const;
 
-    int findNearest(int vertex) const;
-    void addToTour(int vertex);
-    int computeLength(const Tour &tour) const;
+    int findNearest(int vertex, const Parameters &p) const;
+    void addToTour(int vertex, const Parameters &p);
+    int computeLength(const Tour &tour, const Parameters &p) const;
 
     // Processing containers
     const AdjacencyMatrix *m_matrix;

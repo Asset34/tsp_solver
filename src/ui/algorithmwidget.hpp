@@ -12,6 +12,8 @@ class QFormLayout;
 class QLabel;
 class QComboBox;
 class QTextEdit;
+class QFrame;
+class ParametersWidget;
 
 class AlgorithmWidget : public QWidget
 {
@@ -28,9 +30,11 @@ private:
     QString buildCycleString(const std::vector<int> cycle) const;
 
     void resetAlgorithm();
+    void resetParametersWidget();
 
     QVBoxLayout *m_mainLayout;
-    QFormLayout *m_formLayout;
+    QFormLayout *m_algorithmLayout;
+    QFormLayout *m_resultLayout;
 
     QComboBox *m_algorithmComboBox;
 
@@ -39,7 +43,14 @@ private:
 
     QTextEdit *m_cycleTextEdit;
 
+    QFrame *m_separator;
+
+    ParametersWidget *m_parametersWidget;
+
     TspAlgorithm *m_algorithm;
+
+private slots:
+    void setAlgorithmParametersWidget();
 
 };
 

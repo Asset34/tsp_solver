@@ -19,9 +19,23 @@ public:
         Tour tour;
     };
 
+    struct Parameters
+    {
+        // General parameters
+        int maxIterations;
+
+        // Nearest neighbour algorithm parameters
+
+
+        // Simulated annealing algorithm parameters
+        double mint;
+        double maxt;
+        double coolingFactor;
+    };
+
     virtual ~TspAlgorithm() = default;
 
-    virtual Result run(const AdjacencyMatrix &matrix) = 0;
+    virtual Result run(const AdjacencyMatrix &matrix, const Parameters &p) = 0;
     virtual std::string getName() const = 0;
 
 };
