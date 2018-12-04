@@ -10,15 +10,15 @@ public:
     virtual std::string getName() const override;
 
 private:
-    void reset();
-
     std::vector<int> generateNextState(std::vector<int> &state) const;
     int computeLength(const std::vector<int> &state) const;
 
+    Tour tourGenerationFunc(const Tour &tour) const;
+    int tourLengthFunc(const Tour &tour) const;
+    double temperatureFunc(double t) const;
+
     const double TMIN = 1e-4;
     const double TMAX = 1000000.0;
-//    const int TMIN = 0;
-//    const int TMAX = 100;
     const double COOLING_FACTOR = 0.9999;
 
     const AdjacencyMatrix *m_matrix;
