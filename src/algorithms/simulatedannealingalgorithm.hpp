@@ -10,9 +10,6 @@ public:
     virtual std::string getName() const override;
 
 private:
-    std::vector<int> generateNextState(std::vector<int> &state) const;
-    int computeLength(const std::vector<int> &state) const;
-
     Tour tourGenerationFunc(const Tour &tour) const;
     int tourLengthFunc(const Tour &tour) const;
     double temperatureFunc(double t) const;
