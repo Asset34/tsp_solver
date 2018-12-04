@@ -54,7 +54,7 @@ bool AlgorithmWidget::solve(const AdjacencyMatrix &matrix)
     TspAlgorithm::Result result = m_algorithm->run(matrix);
 
     QString lengthStr = QString::number(result.length);
-    QString cycleStr = buildCycleString(result.cycle);
+    QString cycleStr = buildCycleString(result.tour);
     m_lengthLabel->setText(lengthStr);
     m_cycleTextEdit->setText(cycleStr);
 

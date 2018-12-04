@@ -11,7 +11,7 @@ TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matri
 {
     m_matrix = &matrix;
 
-    reset();
+    clear();
 
     // Create set of unvisited vertexes
     for (int i = 0; i < m_matrix->getSize(); i++) {
@@ -19,28 +19,23 @@ TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matri
     }
 
     // Choose start vertex
-    int start = RandomGenerator::generateInt(0, m_vertexes.size() - 1);
-    addToCycle(start);
+    int cur = RandomGenerator::generateInt(0, m_vertexes.size() - 1);
+    addToTour(cur);
 
-    // Find hamilton cycle
-    int cur = start;
+    // Find tour
     int next;
     while (!m_vertexes.empty()) {
         next = findNearest(cur);
         if (next < 0) {
-            return {false, m_length, m_cycle};
+            return {false, computeLength(m_tour), m_tour};
         }
 
-        m_length += (*m_matrix)[cur][next];
-
-        addToCycle(next);
+        addToTour(next);
         cur = next;
     }
+    m_tour.push_back(m_tour.front());
 
-    m_cycle.push_back(start);
-    m_length += (*m_matrix)[cur][start];
-
-    return {true, m_length, m_cycle};
+    return {true, computeLength(m_tour), m_tour};
 }
 
 std::string NearestNeighbourAlgorithm::getName() const
@@ -48,20 +43,29 @@ std::string NearestNeighbourAlgorithm::getName() const
     return "Nearest Neighbour";
 }
 
-void NearestNeighbourAlgorithm::reset()
+void NearestNeighbourAlgorithm::clear()
 {
     m_vertexes.clear();
-    m_cycle.clear();
-    m_length = 0;
+    m_tour.clear();
 }
 
-int NearestNeighbourAlgorithm::findNearest(int curVertex) const
+bool NearestNeighbourAlgorithm::isVisited(int vertex) const
+{
+    if (m_vertexes.find(vertex) == m_vertexes.end()) {
+        return true;
+    }
+
+    return false;
+}
+
+
+int NearestNeighbourAlgorithm::findNearest(int vertex) const
 {
     // Create map of edges
     EdgeMap edges;
     for (int i = 0; i < m_matrix->getSize(); i++) {
         if (!isVisited(i)) {
-            edges.insert(Edge(i, (*m_matrix)[curVertex][i]));
+            edges.insert(Edge(i, (*m_matrix)[vertex][i]));
         }
     }
 
@@ -80,17 +84,18 @@ int NearestNeighbourAlgorithm::findNearest(int curVertex) const
     return minEdge.first;
 }
 
-void NearestNeighbourAlgorithm::addToCycle(int vertex)
+void NearestNeighbourAlgorithm::addToTour(int vertex)
 {
     m_vertexes.erase(vertex);
-    m_cycle.push_back(vertex);
+    m_tour.push_back(vertex);
 }
 
-bool NearestNeighbourAlgorithm::isVisited(int vertex) const
+int NearestNeighbourAlgorithm::computeLength(const Tour &tour) const
 {
-    if (m_vertexes.find(vertex) == m_vertexes.end()) {
-        return true;
+    int length = 0;
+    for (int i = 1; i < tour.size(); i++) {
+        length += (*m_matrix)[ tour[i] ][ tour[i - 1] ];
     }
 
-    return false;
+    return length;
 }

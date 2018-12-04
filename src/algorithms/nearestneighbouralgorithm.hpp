@@ -13,19 +13,18 @@ public:
     virtual std::string getName() const override;
 
 private:
-    void reset();
-
-    int findNearest(int curVertex) const;
-
-    void addToCycle(int vertex);
+    void clear();
 
     bool isVisited(int vertex) const;
+
+    int findNearest(int vertex) const;
+    void addToTour(int vertex);
+    int computeLength(const Tour &tour) const;
 
     // Processing containers
     const AdjacencyMatrix *m_matrix;
     std::set<int> m_vertexes;
-    std::vector<int> m_cycle;
-    int m_length;
+    Tour m_tour;
 
     // Aliases
     using Edge = std::pair<int, int>;
