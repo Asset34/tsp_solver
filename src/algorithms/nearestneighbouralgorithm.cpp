@@ -24,18 +24,21 @@ TspAlgorithm::Result NearestNeighbourAlgorithm::run(const AdjacencyMatrix &matri
 
     // Find tour
     int next;
+    int iterations = 0;
     while (!m_vertexes.empty()) {
         next = findNearest(cur);
         if (next < 0) {
-            return {false, computeLength(m_tour), m_tour};
+            return {false, computeLength(m_tour), iterations, m_tour};
         }
 
         addToTour(next);
         cur = next;
+
+        iterations++;
     }
     m_tour.push_back(m_tour.front());
 
-    return {true, computeLength(m_tour), m_tour};
+    return {true, computeLength(m_tour), iterations, m_tour};
 }
 
 std::string NearestNeighbourAlgorithm::getName() const

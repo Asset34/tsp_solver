@@ -18,14 +18,16 @@ AlgorithmWidget::AlgorithmWidget(QWidget *parent)
     m_algorithmComboBox->addItem(QString::fromStdString(NearestNeighbourAlgorithm().getName()));
     m_algorithmComboBox->addItem(QString::fromStdString(SimulatedAnnealingAlgorithm().getName()));
 
-    // Create length label
+    // Create labels
     m_lengthLabel = new QLabel;
+    m_iterationsLabel = new QLabel;
 
     // Create form layout
     m_formLayout = new QFormLayout;
     m_formLayout->setContentsMargins(0, 0, 0, 0);
-    m_formLayout->addRow("Algorithm: ", m_algorithmComboBox);
-    m_formLayout->addRow("Length: ", m_lengthLabel);
+    m_formLayout->addRow("Algorithm: " , m_algorithmComboBox);
+    m_formLayout->addRow("Length: "    , m_lengthLabel);
+    m_formLayout->addRow("Iterations: ", m_iterationsLabel);
 
     // Create cycle text box
     m_cycleTextEdit = new QTextEdit;
@@ -53,9 +55,14 @@ bool AlgorithmWidget::solve(const AdjacencyMatrix &matrix)
 
     TspAlgorithm::Result result = m_algorithm->run(matrix);
 
+    // Convert result parameters
     QString lengthStr = QString::number(result.length);
+    QString iterationsStr = QString::number(result.iterations);
     QString cycleStr = buildCycleString(result.tour);
+
+    // Set results
     m_lengthLabel->setText(lengthStr);
+    m_iterationsLabel->setText(iterationsStr);
     m_cycleTextEdit->setText(cycleStr);
 
     return result.status;

@@ -16,6 +16,7 @@ TspAlgorithm::Result SimulatedAnnealingAlgorithm::run(const AdjacencyMatrix &mat
     Tour next;
     int delta;
     double chance;
+    int iterations = 0;
     for (double t = TMAX; t > TMIN; t = temperatureFunc(t)) {
         next = tourGenerationFunc(cur);
 
@@ -29,9 +30,11 @@ TspAlgorithm::Result SimulatedAnnealingAlgorithm::run(const AdjacencyMatrix &mat
                 cur = next;
             }
         }
+
+        iterations++;
     }
 
-    return {true, tourLengthFunc(cur), cur};
+    return {true, tourLengthFunc(cur), iterations, cur};
 }
 
 std::string SimulatedAnnealingAlgorithm::getName() const

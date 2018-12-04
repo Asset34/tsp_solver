@@ -35,6 +35,7 @@ private:
     QComboBox *m_algorithmComboBox;
 
     QLabel *m_lengthLabel;
+    QLabel *m_iterationsLabel;
 
     QTextEdit *m_cycleTextEdit;
 

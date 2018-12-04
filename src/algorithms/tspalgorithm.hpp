@@ -15,6 +15,7 @@ public:
     {
         bool status;
         int length;
+        int iterations;
         Tour tour;
     };
 

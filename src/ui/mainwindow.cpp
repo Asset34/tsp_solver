@@ -61,6 +61,7 @@ void MainWindow::solve()
         return;
     }
 
+    setStatus("Solving ...");
     bool result = m_algorithmWidget->solve(matrix);
     if (!result) {
         setStatus("Invalid result");
