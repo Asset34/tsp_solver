@@ -21,6 +21,9 @@ public:
     virtual Result run(const AdjacencyMatrix &matrix) = 0;
     virtual std::string getName() const = 0;
 
+protected:
+    using Tour = std::vector<int>;
+
 };
 
 #endif // TSPALGORITHM_HPP
