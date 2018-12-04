@@ -9,20 +9,19 @@
 class TspAlgorithm
 {
 public:
-    virtual ~TspAlgorithm() = default;
+    using Tour = std::vector<int>;
 
     struct Result
     {
         bool status;
         int length;
-        std::vector<int> cycle;
+        Tour tour;
     };
+
+    virtual ~TspAlgorithm() = default;
 
     virtual Result run(const AdjacencyMatrix &matrix) = 0;
     virtual std::string getName() const = 0;
-
-protected:
-    using Tour = std::vector<int>;
 
 };
 
