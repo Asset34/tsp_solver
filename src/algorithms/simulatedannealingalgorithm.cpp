@@ -1,39 +1,62 @@
 #include "simulatedannealingalgorithm.hpp"
 
 #include <cmath>
+#include <algorithm>
 
 #include "utills/randomgenerator.hpp"
+
+#include <QDebug>
 
 TspAlgorithm::Result SimulatedAnnealingAlgorithm::run(const AdjacencyMatrix &matrix)
 {
     m_matrix = &matrix;
 
-    // Generate initial state
-    std::vector<int> state = RandomGenerator::generateSet(0, 0, matrix.getSize() - 1);
+    int iteratioins = 0;
 
-    std::vector<int> prev = state;
-    std::vector<int> cur = state;
+    // Generate initial state
+    std::vector<int> cur = RandomGenerator::generateSet(0, 0, matrix.getSize() - 1);
+    cur.push_back(cur.front());
+    // qDebug() << "Initial_state: " << cur << endl << endl;
+
+    std::vector<int> next;
     int delta;
     double chance;
     double t = TMAX;
-    while (t > TMIN + ACCURACY) {
-        generateNextState(cur);
+//    int t = TMAX;
+    while (t > TMIN) {
+        // qDebug() << "------------------------------------------";
+        // qDebug() << "Temperature1: "  << t;
 
-        delta = computeLength(cur) - computeLength(prev);
-        if (delta >= 0) {
-            prev = cur;
+        next = generateNextState(cur);
+
+        // qDebug() << "Cur: " << cur;
+        // qDebug() << "Cur_length: " << computeLength(cur);
+        // qDebug() << "Next: " << next;
+        // qDebug() << "Next_length: " << computeLength(next);
+
+        delta = computeLength(next) - computeLength(cur);
+        // qDebug() << "Delta: " << delta;
+        if (delta <= 0) {
+            cur = next;
         }
         else {
-            chance = exp(- delta/t);
+            chance = exp(-delta/t);
+//            chance = exp(-delta/static_cast<double>(t));
+            // qDebug() << "Chance: " << chance;
             if (RandomGenerator::generateAction(chance)) {
-                prev = cur;
+                // qDebug() << "_ACTION_";
+                cur = next;
             }
         }
 
         t *= COOLING_FACTOR;
+//        t--;
+
+        iteratioins++;
     }
     cur.push_back(cur.front());
 
+    // qDebug() << "Iterations:" << iteratioins;
 
     return {true, computeLength(cur), cur};
 }
@@ -48,10 +71,21 @@ void SimulatedAnnealingAlgorithm::reset()
     // STUB
 }
 
-void SimulatedAnnealingAlgorithm::generateNextState(std::vector<int> &state) const
+std::vector<int> SimulatedAnnealingAlgorithm::generateNextState(std::vector<int> &state) const
 {
-    std::vector<int> swapIndexes = RandomGenerator::generateSet(2, 0, state.size() - 1);
-    std::swap(state[ swapIndexes[0] ], state[ swapIndexes[1] ]);
+    // Generate indexes
+    std::vector<int> swapIndexes = RandomGenerator::generateSet(2, 0, state.size() - 2);
+    std::sort(swapIndexes.begin(), swapIndexes.end());
+
+    // Generate new state
+    std::vector<int> newState(state);
+//    std::swap(newState[ swapIndexes[0] ], newState[ swapIndexes[1] ]);
+    std::reverse(newState.begin() + swapIndexes[0], newState.begin() + swapIndexes[1] + 1);
+    newState[newState.size() - 1] = newState.front();
+
+    // qDebug() << "Indxes: " << swapIndexes;
+
+    return newState;
 }
 
 int SimulatedAnnealingAlgorithm::computeLength(const std::vector<int> &state) const

@@ -12,13 +12,14 @@ public:
 private:
     void reset();
 
-    void generateNextState(std::vector<int> &state) const;
+    std::vector<int> generateNextState(std::vector<int> &state) const;
     int computeLength(const std::vector<int> &state) const;
 
-    const double TMIN = 0.0;
-    const double TMAX = 100.0;
-    const double COOLING_FACTOR = 0.01;
-    const double ACCURACY = 1e-7;
+    const double TMIN = 1e-4;
+    const double TMAX = 1000000.0;
+//    const int TMIN = 0;
+//    const int TMAX = 100;
+    const double COOLING_FACTOR = 0.9999;
 
     const AdjacencyMatrix *m_matrix;
 
