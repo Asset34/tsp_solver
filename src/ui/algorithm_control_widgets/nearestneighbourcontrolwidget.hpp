@@ -4,7 +4,9 @@
 #include "algorithmcontrolwidget.hpp"
 
 class QFormLayout;
+class QHBoxLayout;
 class QSpinBox;
+class QCheckBox;
 
 class NearestNeighbourControlWidget : public AlgorithmControlWidget
 {
@@ -16,9 +18,14 @@ public:
     virtual TspAlgorithm::Parameters getParameters() const override;
 
 private:
-    QFormLayout *m_layout;
+    QFormLayout *m_mainLayout;
+    QHBoxLayout *m_maxIterationsLayout;
 
     QSpinBox *m_maxIterationsSpinBox;
+    QCheckBox *m_maxIterationsCheckBox;
+
+private slots:
+
 
 };
 

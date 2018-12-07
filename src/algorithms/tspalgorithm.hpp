@@ -23,9 +23,7 @@ public:
     {
         // General parameters
         int maxIterations;
-
-        // Nearest neighbour algorithm parameters
-
+        bool maxIterationsFlag;
 
         // Simulated annealing algorithm parameters
         double mint;
@@ -37,6 +35,11 @@ public:
 
     virtual Result run(const AdjacencyMatrix &matrix, const Parameters &p) = 0;
     virtual std::string getName() const = 0;
+    virtual void clear() = 0;
+
+protected:
+    const AdjacencyMatrix *m_matrix;
+    Parameters m_parameters;
 
 };
 

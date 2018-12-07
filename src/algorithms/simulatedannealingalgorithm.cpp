@@ -5,11 +5,12 @@
 
 #include "utills/randomgenerator.hpp"
 
-#include <QDebug>
-
 TspAlgorithm::Result SimulatedAnnealingAlgorithm::run(const AdjacencyMatrix &matrix, const Parameters &p)
 {
+    clear();
+
     m_matrix = &matrix;
+    m_parameters = p;
 
     // Generate initial tour
     Tour cur = RandomGenerator::generateSet(0, 0, matrix.getSize() - 1);
@@ -18,12 +19,11 @@ TspAlgorithm::Result SimulatedAnnealingAlgorithm::run(const AdjacencyMatrix &mat
     Tour next;
     int delta;
     double chance;
-    int iterations = 0;
     double t = p.maxt;
-    while (t > p.mint && iterations < p.maxIterations) {
-        next = tourGenerationFunc(cur, p);
+    while (!stopCriterion(t)) {
+        next = tourGenerationFunc(cur);
 
-        delta = tourLengthFunc(next, p) - tourLengthFunc(cur, p);
+        delta = tourLengthFunc(next) - tourLengthFunc(cur);
         if (delta <= 0) {
             cur = next;
         }
@@ -34,12 +34,12 @@ TspAlgorithm::Result SimulatedAnnealingAlgorithm::run(const AdjacencyMatrix &mat
             }
         }
 
-        t = temperatureFunc(t, p);
+        t = temperatureFunc(t);
 
-        iterations++;
+        m_iterations++;
     }
 
-    return {true, tourLengthFunc(cur, p), iterations, cur};
+    return {true, tourLengthFunc(cur), m_iterations, cur};
 }
 
 std::string SimulatedAnnealingAlgorithm::getName() const
@@ -47,7 +47,12 @@ std::string SimulatedAnnealingAlgorithm::getName() const
     return "Simulated annealing";
 }
 
-TspAlgorithm::Tour SimulatedAnnealingAlgorithm::tourGenerationFunc(const Tour &tour, const Parameters &p) const
+void SimulatedAnnealingAlgorithm::clear()
+{
+    m_iterations = 0;
+}
+
+TspAlgorithm::Tour SimulatedAnnealingAlgorithm::tourGenerationFunc(const Tour &tour) const
 {
     // Generate indexes
     std::vector<int> indexes = RandomGenerator::generateSet(2, 0, tour.size() - 2);
@@ -61,7 +66,7 @@ TspAlgorithm::Tour SimulatedAnnealingAlgorithm::tourGenerationFunc(const Tour &t
     return newTour;
 }
 
-int SimulatedAnnealingAlgorithm::tourLengthFunc(const Tour &tour, const Parameters &p) const
+int SimulatedAnnealingAlgorithm::tourLengthFunc(const Tour &tour) const
 {
     int length = 0;
     for (int i = 1; i < tour.size(); i++) {
@@ -71,7 +76,14 @@ int SimulatedAnnealingAlgorithm::tourLengthFunc(const Tour &tour, const Paramete
     return length;
 }
 
-double SimulatedAnnealingAlgorithm::temperatureFunc(double t, const Parameters &p) const
+double SimulatedAnnealingAlgorithm::temperatureFunc(double t) const
 {
-    return t * p.coolingFactor;
+    return t * m_parameters.coolingFactor;
+}
+
+bool SimulatedAnnealingAlgorithm::stopCriterion(double t) const
+{
+    return t <= m_parameters.mint ||
+           (m_parameters.maxIterationsFlag &&
+           m_iterations >= m_parameters.maxIterations);
 }
