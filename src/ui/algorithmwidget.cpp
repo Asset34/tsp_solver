@@ -7,9 +7,8 @@
 #include <QTextEdit>
 #include <QFrame>
 
-#include <ui/parameterswidget.hpp>
-#include <ui/nearestneighbourparameterswidget.hpp>
-#include <ui/simulatedannealingparameterswidget.hpp>
+#include <ui/algorithm_control_widgets/nearestneighbourcontrolwidget.hpp>
+#include <ui/algorithm_control_widgets/simulatedannealingcontrolwidget.hpp>
 
 #include <algorithms/nearestneighbouralgorithm.hpp>
 #include <algorithms/simulatedannealingalgorithm.hpp>
@@ -47,15 +46,15 @@ AlgorithmWidget::AlgorithmWidget(QWidget *parent)
     m_cycleTextEdit->setWordWrapMode(QTextOption::WordWrap);
     m_cycleTextEdit->setReadOnly(true);
 
-    // Create parameters widget
-    m_parametersWidget = new NearestNeighbourParametersWidget;
-    m_parametersWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+    // Create algorithm control widget
+    m_algorithmControlWidget = new NearestNeighbourControlWidget;
+    m_algorithmControlWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 
     // Create main layout
     m_mainLayout = new QVBoxLayout;
     m_mainLayout->setContentsMargins(0, 0, 0, 0);
     m_mainLayout->addLayout(m_algorithmLayout);
-    m_mainLayout->addWidget(m_parametersWidget);
+    m_mainLayout->addWidget(m_algorithmControlWidget);
     m_mainLayout->addWidget(m_separator);
     m_mainLayout->addLayout(m_resultLayout);
     m_mainLayout->addWidget(m_cycleTextEdit);
@@ -68,7 +67,7 @@ AlgorithmWidget::AlgorithmWidget(QWidget *parent)
         m_algorithmComboBox,
         static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
         this,
-        &AlgorithmWidget::setAlgorithmParametersWidget
+        &AlgorithmWidget::setAlgorithmControlWidget
         );
 }
 
@@ -81,7 +80,7 @@ bool AlgorithmWidget::solve(const AdjacencyMatrix &matrix)
 {
     resetAlgorithm();
 
-    TspAlgorithm::Parameters p = m_parametersWidget->getParameters();
+    TspAlgorithm::Parameters p = m_algorithmControlWidget->getParameters();
     TspAlgorithm::Result result = m_algorithm->run(matrix, p);
 
     // Convert results
@@ -130,29 +129,28 @@ void AlgorithmWidget::resetAlgorithm()
     }
 }
 
-void AlgorithmWidget::resetParametersWidget()
+void AlgorithmWidget::resetAlgorithmControlWidget()
 {
-    m_mainLayout->removeWidget(m_parametersWidget);
-
-    delete m_parametersWidget;
+    m_mainLayout->removeWidget(m_algorithmControlWidget);
+    delete m_algorithmControlWidget;
 
     int row = m_algorithmComboBox->currentIndex();
     switch (row) {
         case 0:
-            m_parametersWidget = new NearestNeighbourParametersWidget;
+            m_algorithmControlWidget = new NearestNeighbourControlWidget;
         break;
         case 1:
-            m_parametersWidget = new SimulatedAnnealingParametersWidget;
+            m_algorithmControlWidget = new SimulatedAnnealingControlWidget;
         break;
         default:
-            m_parametersWidget = nullptr;
+            m_algorithmControlWidget = nullptr;
         break;
     }
 
-    m_mainLayout->insertWidget(1, m_parametersWidget);
+    m_mainLayout->insertWidget(1, m_algorithmControlWidget);
 }
 
-void AlgorithmWidget::setAlgorithmParametersWidget()
+void AlgorithmWidget::setAlgorithmControlWidget()
 {
-    resetParametersWidget();
+    resetAlgorithmControlWidget();
 }

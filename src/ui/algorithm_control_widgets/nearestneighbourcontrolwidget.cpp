@@ -1,10 +1,10 @@
-#include "nearestneighbourparameterswidget.hpp"
+#include "nearestneighbourcontrolwidget.hpp"
 
 #include <QFormLayout>
 #include <QSpinBox>
 
-NearestNeighbourParametersWidget::NearestNeighbourParametersWidget(QWidget *parent)
-    : ParametersWidget(parent)
+NearestNeighbourControlWidget::NearestNeighbourControlWidget(QWidget *parent)
+    : AlgorithmControlWidget(parent)
 {
     // Create spin box
     m_maxIterationsSpinBox = new QSpinBox;
@@ -20,7 +20,7 @@ NearestNeighbourParametersWidget::NearestNeighbourParametersWidget(QWidget *pare
     setLayout(m_layout);
 }
 
-TspAlgorithm::Parameters NearestNeighbourParametersWidget::getParameters() const
+TspAlgorithm::Parameters NearestNeighbourControlWidget::getParameters() const
 {
     TspAlgorithm::Parameters p;
     p.maxIterations = m_maxIterationsSpinBox->value();

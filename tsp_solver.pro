@@ -34,9 +34,9 @@ SOURCES += \
     src/algorithms/nearestneighbouralgorithm.cpp \
     src/ui/algorithmwidget.cpp \
     src/algorithms/simulatedannealingalgorithm.cpp \
-    src/ui/parameterswidget.cpp \
-    src/ui/nearestneighbourparameterswidget.cpp \
-    src/ui/simulatedannealingparameterswidget.cpp
+    src/ui/algorithm_control_widgets/algorithmcontrolwidget.cpp \
+    src/ui/algorithm_control_widgets/nearestneighbourcontrolwidget.cpp \
+    src/ui/algorithm_control_widgets/simulatedannealingcontrolwidget.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -49,8 +49,8 @@ HEADERS += \
     src/algorithms/nearestneighbouralgorithm.hpp \
     src/ui/algorithmwidget.hpp \
     src/algorithms/simulatedannealingalgorithm.hpp \
-    src/ui/parameterswidget.hpp \
-    src/ui/nearestneighbourparameterswidget.hpp \
-    src/ui/simulatedannealingparameterswidget.hpp
+    src/ui/algorithm_control_widgets/algorithmcontrolwidget.hpp \
+    src/ui/algorithm_control_widgets/nearestneighbourcontrolwidget.hpp \
+    src/ui/algorithm_control_widgets/simulatedannealingcontrolwidget.hpp
 
 INCLUDEPATH += $$PWD/src

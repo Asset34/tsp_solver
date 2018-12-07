@@ -5,6 +5,7 @@
 
 #include <QString>
 
+#include <ui/algorithm_control_widgets/algorithmcontrolwidget.hpp>
 #include "algorithms/tspalgorithm.hpp"
 
 class QVBoxLayout;
@@ -13,7 +14,7 @@ class QLabel;
 class QComboBox;
 class QTextEdit;
 class QFrame;
-class ParametersWidget;
+class AlgorithmControlWidget;
 
 class AlgorithmWidget : public QWidget
 {
@@ -30,7 +31,7 @@ private:
     QString buildCycleString(const std::vector<int> cycle) const;
 
     void resetAlgorithm();
-    void resetParametersWidget();
+    void resetAlgorithmControlWidget();
 
     QVBoxLayout *m_mainLayout;
     QFormLayout *m_algorithmLayout;
@@ -45,12 +46,12 @@ private:
 
     QFrame *m_separator;
 
-    ParametersWidget *m_parametersWidget;
+    AlgorithmControlWidget *m_algorithmControlWidget;
 
     TspAlgorithm *m_algorithm;
 
 private slots:
-    void setAlgorithmParametersWidget();
+    void setAlgorithmControlWidget();
 
 };
 

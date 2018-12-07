@@ -1,19 +1,19 @@
-#ifndef SIMULATEDANNEALINGPARAMETERSWIDGET_HPP
-#define SIMULATEDANNEALINGPARAMETERSWIDGET_HPP
+#ifndef SIMULATEDANNEALINGCONTROLWIDGET_HPP
+#define SIMULATEDANNEALINGCONTROLWIDGET_HPP
 
-#include "parameterswidget.hpp"
+#include "algorithmcontrolwidget.hpp"
 
 class QFormLayout;
 class QSpinBox;
 class QDoubleSpinBox;
 class QLineEdit;
 
-class SimulatedAnnealingParametersWidget : public ParametersWidget
+class SimulatedAnnealingControlWidget : public AlgorithmControlWidget
 {
     Q_OBJECT
 
 public:
-    explicit SimulatedAnnealingParametersWidget(QWidget *parent = nullptr);
+    explicit SimulatedAnnealingControlWidget(QWidget *parent = nullptr);
 
     virtual TspAlgorithm::Parameters getParameters() const override;
 
@@ -28,4 +28,4 @@ private:
 
 };
 
-#endif // SIMULATEDANNEALINGPARAMETERSWIDGET_HPP
+#endif // SIMULATEDANNEALINGPACONTROLSWIDGET_HPP

@@ -1,4 +1,4 @@
-#include "simulatedannealingparameterswidget.hpp"
+#include "simulatedannealingcontrolwidget.hpp"
 
 #include <QFormLayout>
 #include <QSpinBox>
@@ -6,8 +6,8 @@
 
 #include <QDoubleValidator>
 
-SimulatedAnnealingParametersWidget::SimulatedAnnealingParametersWidget(QWidget *parent)
-    : ParametersWidget (parent)
+SimulatedAnnealingControlWidget::SimulatedAnnealingControlWidget(QWidget *parent)
+    : AlgorithmControlWidget (parent)
 {
     // Create max iterations spin box
     m_maxIterationsSpinBox = new QSpinBox;
@@ -43,11 +43,10 @@ SimulatedAnnealingParametersWidget::SimulatedAnnealingParametersWidget(QWidget *
     setLayout(m_layout);
 }
 
-TspAlgorithm::Parameters SimulatedAnnealingParametersWidget::getParameters() const
+TspAlgorithm::Parameters SimulatedAnnealingControlWidget::getParameters() const
 {
     TspAlgorithm::Parameters p;
     p.maxIterations = m_maxIterationsSpinBox->value();
-
     p.mint = m_mintLineEdit->text().toDouble();
     p.maxt = m_maxtLineEdit->text().toDouble();
     p.coolingFactor = m_coolingFactorLineEdit->text().toDouble();
