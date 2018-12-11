@@ -9,6 +9,8 @@ class RandomGenerator
 public:
     static bool generateBool();
     static int generateInt(int min, int max);
+    static double generateDouble(double min, double max);
+    static int generateRoulette(const std::vector<double> &sectors);
     static std::vector<int> generateSet(int count, int min, int max);
     static bool generateAction(double chance);
 

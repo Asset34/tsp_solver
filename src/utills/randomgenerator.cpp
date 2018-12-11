@@ -20,6 +20,35 @@ int RandomGenerator::generateInt(int min, int max)
     return std::uniform_int_distribution<int>{min, max}(m_engine);
 }
 
+double RandomGenerator::generateDouble(double min, double max)
+{
+    std::uniform_real_distribution<double> distr(min, max);
+
+    return distr(m_engine);
+}
+
+int RandomGenerator::generateRoulette(const std::vector<double> &sectors)
+{
+    // Compute sum of sectors
+    double sum = 0;
+    for (double value : sectors) {
+        sum += value;
+    }
+
+    double value = generateDouble(0.0, sum);
+
+    // Choose sector
+    double border = 0.0;
+    int sector = -1;
+    while (value > border)
+    {
+        sector++;
+        border += sectors[sector];
+    }
+
+    return sector;
+}
+
 std::vector<int> RandomGenerator::generateSet(int count, int min, int max)
 {
     // Create range vector
@@ -41,7 +70,8 @@ bool RandomGenerator::generateAction(double chance)
 {
     std::uniform_real_distribution<double> distr(0.0, 1.0);
 
-    double result = distr(m_engine);
+//    double result = distr(m_engine);
+    double result = generateDouble(0.0, 1.0);
     if (result <= chance) {
         return true;
     }
