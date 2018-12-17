@@ -9,9 +9,11 @@
 
 #include <ui/algorithm_control_widgets/nearestneighbourcontrolwidget.hpp>
 #include <ui/algorithm_control_widgets/simulatedannealingcontrolwidget.hpp>
+#include <ui/algorithm_control_widgets/antcolonycontrolwidget.hpp>
 
 #include <algorithms/nearestneighbouralgorithm.hpp>
 #include <algorithms/simulatedannealingalgorithm.hpp>
+#include <algorithms/antcolonyalgorithm.hpp>
 
 AlgorithmWidget::AlgorithmWidget(QWidget *parent)
     : QWidget(parent),
@@ -21,6 +23,7 @@ AlgorithmWidget::AlgorithmWidget(QWidget *parent)
     m_algorithmComboBox = new QComboBox;
     m_algorithmComboBox->addItem(QString::fromStdString(NearestNeighbourAlgorithm().getName()));
     m_algorithmComboBox->addItem(QString::fromStdString(SimulatedAnnealingAlgorithm().getName()));
+    m_algorithmComboBox->addItem(QString::fromStdString(AntColonyAlgorithm().getName()));
 
     // Create separator
     m_separator = new QFrame;
@@ -103,7 +106,6 @@ QString AlgorithmWidget::buildCycleString(const std::vector<int> cycle) const
     }
 
     QString cycleStr;
-
     cycleStr.append("(" + QString::number(cycle[0]) + ")");
     for (int i = 1; i < cycle.size(); i++) {
         cycleStr.append(" => ");
@@ -126,6 +128,9 @@ void AlgorithmWidget::resetAlgorithm()
         case 1:
             m_algorithm = new SimulatedAnnealingAlgorithm;
         break;
+        case 2:
+            m_algorithm = new AntColonyAlgorithm;
+        break;
     }
 }
 
@@ -141,6 +146,9 @@ void AlgorithmWidget::resetAlgorithmControlWidget()
         break;
         case 1:
             m_algorithmControlWidget = new SimulatedAnnealingControlWidget;
+        break;
+        case 2:
+            m_algorithmControlWidget = new AntColonyControlWidget;
         break;
         default:
             m_algorithmControlWidget = nullptr;
