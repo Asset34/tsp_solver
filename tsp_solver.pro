@@ -37,7 +37,8 @@ SOURCES += \
     src/ui/algorithm_control_widgets/algorithmcontrolwidget.cpp \
     src/ui/algorithm_control_widgets/nearestneighbourcontrolwidget.cpp \
     src/ui/algorithm_control_widgets/simulatedannealingcontrolwidget.cpp \
-    src/algorithms/antcolonyalgorithm.cpp
+    src/algorithms/antcolonyalgorithm.cpp \
+    src/ui/algorithm_control_widgets/antcolonycontrolwidget.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -53,6 +54,7 @@ HEADERS += \
     src/ui/algorithm_control_widgets/algorithmcontrolwidget.hpp \
     src/ui/algorithm_control_widgets/nearestneighbourcontrolwidget.hpp \
     src/ui/algorithm_control_widgets/simulatedannealingcontrolwidget.hpp \
-    src/algorithms/antcolonyalgorithm.hpp
+    src/algorithms/antcolonyalgorithm.hpp \
+    src/ui/algorithm_control_widgets/antcolonycontrolwidget.hpp
 
 INCLUDEPATH += $$PWD/src

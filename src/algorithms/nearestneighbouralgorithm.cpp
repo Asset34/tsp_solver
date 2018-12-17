@@ -70,7 +70,6 @@ bool NearestNeighbourAlgorithm::isVisited(int vertex) const
     return false;
 }
 
-
 bool NearestNeighbourAlgorithm::findNearest(int vertex)
 {
     // Create map of edges

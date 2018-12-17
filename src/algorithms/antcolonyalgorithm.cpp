@@ -17,16 +17,18 @@ TspAlgorithm::Result AntColonyAlgorithm::run(
     int vertexCount = matrix.getSize();
 
     // Init pheromone matrix
-    std::vector<std::vector<double>> pheromones(vertexCount, std::vector<double>(vertexCount, 1.0));
+    PheromoneMatrix pheromones(vertexCount, std::vector<double>(vertexCount, 1.0));
 
     std::vector<Tour> tours(p.antCount);
     std::list<int> unvisited;
     std::vector<int> tour(vertexCount + 1);
     int curVertex;
     for (int i = 0; i < p.maxIterations; i++) {
+//        qDebug() << "Iteration " << i << "-----------------------------";
         for (int j = 0; j < p.antCount; j++) {
+//            qDebug() << "Aunt " << j;
             // Generate start vertex
-            curVertex = RandomGenerator::generateInt(0, vertexCount);
+            curVertex = RandomGenerator::generateInt(0, vertexCount - 1);
 
             // Init list of unvisited vertexes
             unvisited.resize(matrix.getSize());
@@ -34,7 +36,6 @@ TspAlgorithm::Result AntColonyAlgorithm::run(
             unvisited.remove(curVertex);
 
             // Init tour with start vertex
-            tour.resize(vertexCount);
             tour[0] = curVertex;
             tour[vertexCount] = curVertex;
 
@@ -45,6 +46,7 @@ TspAlgorithm::Result AntColonyAlgorithm::run(
                 unvisited.remove(curVertex);
                 tour[v] = curVertex;
             }
+//            qDebug() << "TOUR: " << tour;
 
             tours[j] = tour;
         }
@@ -109,13 +111,24 @@ int AntColonyAlgorithm::findNext(int curVertex,
     }
 
     // Compute chance of each vertex
-    std::vector<double> chances(unvisited.size());
-    for (int v = 0; v < unvisited.size(); v++) {
-        chances[v] = pheromones[curVertex][v] / (matrix[curVertex][v] * sum);
+    std::vector<double> chances;
+    chances.reserve(unvisited.size());
+
+//    for (int v = 0; v < unvisited.size(); v++) {
+//        chances[v] = pheromones[curVertex][ unvisited[v] ] / (matrix[curVertex][ unvisited[v] ] * sum);
+//    }
+
+    std::vector<int> temp;
+    temp.reserve(unvisited.size());
+    for (int v : unvisited) {
+        chances.push_back(pheromones[curVertex][v] / (matrix[curVertex][v] * sum));
+        temp.push_back(v);
     }
 
     // Generate next vertex
-    return RandomGenerator::generateRoulette(chances);
+    int nextIndex = RandomGenerator::generateRoulette(chances);
+
+    return temp[nextIndex];
 }
 
 int AntColonyAlgorithm::computeLength(const Tour &tour, const AdjacencyMatrix &matrix) const
