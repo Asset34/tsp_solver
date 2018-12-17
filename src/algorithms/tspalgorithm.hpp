@@ -29,6 +29,12 @@ public:
         double mint;
         double maxt;
         double coolingFactor;
+
+        // Ant colony algorithm parameters
+        int antCount;
+        double alpha;
+        double beta;
+        double evaporateFactor;
     };
 
     virtual ~TspAlgorithm() = default;
