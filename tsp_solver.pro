@@ -27,9 +27,6 @@ SOURCES += \
         src/main.cpp \
     src/ui/mainwindow.cpp \
     src/adjacencymatrix.cpp \
-    src/view_model/adjacencymatrixmodel.cpp \
-    src/view_model/adjacencymatrixwidget.cpp \
-    src/ui/adjacencymatrixmanagerwidget.cpp \
     src/utills/randomgenerator.cpp \
     src/algorithms/nearestneighbouralgorithm.cpp \
     src/ui/algorithmwidget.cpp \
@@ -43,9 +40,6 @@ SOURCES += \
 HEADERS += \
     src/ui/mainwindow.hpp \
     src/adjacencymatrix.hpp \
-    src/view_model/adjacencymatrixmodel.hpp \
-    src/view_model/adjacencymatrixwidget.hpp \
-    src/ui/adjacencymatrixmanagerwidget.hpp \
     src/utills/randomgenerator.hpp \
     src/algorithms/tspalgorithm.hpp \
     src/algorithms/nearestneighbouralgorithm.hpp \
