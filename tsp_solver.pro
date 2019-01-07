@@ -29,13 +29,8 @@ SOURCES += \
     src/adjacencymatrix.cpp \
     src/utills/randomgenerator.cpp \
     src/algorithms/nearestneighbouralgorithm.cpp \
-    src/ui/algorithmwidget.cpp \
     src/algorithms/simulatedannealingalgorithm.cpp \
-    src/ui/algorithm_control_widgets/algorithmcontrolwidget.cpp \
-    src/ui/algorithm_control_widgets/nearestneighbourcontrolwidget.cpp \
-    src/ui/algorithm_control_widgets/simulatedannealingcontrolwidget.cpp \
-    src/algorithms/antcolonyalgorithm.cpp \
-    src/ui/algorithm_control_widgets/antcolonycontrolwidget.cpp
+    src/algorithms/antcolonyalgorithm.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -43,12 +38,7 @@ HEADERS += \
     src/utills/randomgenerator.hpp \
     src/algorithms/tspalgorithm.hpp \
     src/algorithms/nearestneighbouralgorithm.hpp \
-    src/ui/algorithmwidget.hpp \
     src/algorithms/simulatedannealingalgorithm.hpp \
-    src/ui/algorithm_control_widgets/algorithmcontrolwidget.hpp \
-    src/ui/algorithm_control_widgets/nearestneighbourcontrolwidget.hpp \
-    src/ui/algorithm_control_widgets/simulatedannealingcontrolwidget.hpp \
-    src/algorithms/antcolonyalgorithm.hpp \
-    src/ui/algorithm_control_widgets/antcolonycontrolwidget.hpp
+    src/algorithms/antcolonyalgorithm.hpp
 
 INCLUDEPATH += $$PWD/src
