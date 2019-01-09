@@ -43,6 +43,8 @@ void GraphDrawer::setPath(const QVector<int> &numbers)
 
 void GraphDrawer::generate(int count)
 {
+    m_vertices.clear();
+
     for (int i = 0; i < count; i++) {
         m_vertices.push_back(generateVertex());
     }
