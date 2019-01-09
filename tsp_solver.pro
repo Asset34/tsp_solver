@@ -31,7 +31,9 @@ SOURCES += \
     src/algorithms/nearestneighbouralgorithm.cpp \
     src/algorithms/simulatedannealingalgorithm.cpp \
     src/algorithms/antcolonyalgorithm.cpp \
-    src/ui/graphdrawer.cpp
+    src/ui/graphdrawer.cpp \
+    src/ui/graphdrawermanager.cpp \
+    src/ui/scrollablegraphdrawer.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -41,6 +43,8 @@ HEADERS += \
     src/algorithms/nearestneighbouralgorithm.hpp \
     src/algorithms/simulatedannealingalgorithm.hpp \
     src/algorithms/antcolonyalgorithm.hpp \
-    src/ui/graphdrawer.hpp
+    src/ui/graphdrawer.hpp \
+    src/ui/graphdrawermanager.hpp \
+    src/ui/scrollablegraphdrawer.hpp
 
 INCLUDEPATH += $$PWD/src
