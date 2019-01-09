@@ -30,7 +30,8 @@ SOURCES += \
     src/utills/randomgenerator.cpp \
     src/algorithms/nearestneighbouralgorithm.cpp \
     src/algorithms/simulatedannealingalgorithm.cpp \
-    src/algorithms/antcolonyalgorithm.cpp
+    src/algorithms/antcolonyalgorithm.cpp \
+    src/ui/graphdrawer.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -39,6 +40,7 @@ HEADERS += \
     src/algorithms/tspalgorithm.hpp \
     src/algorithms/nearestneighbouralgorithm.hpp \
     src/algorithms/simulatedannealingalgorithm.hpp \
-    src/algorithms/antcolonyalgorithm.hpp
+    src/algorithms/antcolonyalgorithm.hpp \
+    src/ui/graphdrawer.hpp
 
 INCLUDEPATH += $$PWD/src
