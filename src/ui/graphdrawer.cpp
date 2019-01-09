@@ -43,7 +43,7 @@ void GraphDrawer::setPath(const QVector<int> &numbers)
 
 void GraphDrawer::generate(int count)
 {
-    m_vertices.clear();
+    clear();
 
     for (int i = 0; i < count; i++) {
         m_vertices.push_back(generateVertex());
@@ -56,7 +56,15 @@ void GraphDrawer::generate(int count)
 void GraphDrawer::clear()
 {
     m_vertices.clear();
+    m_path.clear();
+
     setMinimumSize(QSize(0, 0));
+    update();
+}
+
+void GraphDrawer::clearPath()
+{
+    m_path.clear();
     update();
 }
 

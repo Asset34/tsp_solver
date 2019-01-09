@@ -21,6 +21,7 @@ public:
 public slots:
     void generate(int count);
     void clear();
+    void clearPath();
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;
