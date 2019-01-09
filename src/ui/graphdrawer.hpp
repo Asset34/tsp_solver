@@ -16,7 +16,6 @@ public:
     explicit GraphDrawer(QWidget *parent = nullptr);
 
     AdjacencyMatrix getMatrix() const;
-
     void setPath(const QVector<int> &numbers);
 
 public slots:
