@@ -8,6 +8,7 @@ std::string SimulatedAnnealingAlgorithm::getName() const
 std::vector<Parameter*> SimulatedAnnealingAlgorithm::getParameters()
 {
     // TODO
+    return {};
 }
 
 TspAlgorithm::Result SimulatedAnnealingAlgorithm::execute(const AdjacencyMatrix &matrix)
