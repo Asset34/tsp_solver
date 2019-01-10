@@ -3,15 +3,9 @@
 
 #include <QMainWindow>
 
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-
-#include <QFrame>
-#include <QLabel>
-#include <QPushButton>
-
-#include "ui/adjacencymatrixmanagerwidget.hpp"
-#include "ui/algorithmwidget.hpp"
+class GraphDrawerManager;
+class TspAlgorithmWidget;
+class ResultWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -21,22 +15,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
 
 private:
-    void setStatus(const QString &text);
-
-    QHBoxLayout *m_mainlayout;
-    QVBoxLayout *m_algorithmLayout;
-
-    QPushButton *m_solveButton;
-
-    QFrame *m_separator;
-
-    QLabel *m_statusLabel;
-
-    AdjacencyMatrixManagerWidget *m_matrixWidget;
-    AlgorithmWidget *m_algorithmWidget;
-
-private slots:
-    void solve();
+    GraphDrawerManager *m_graphDrawerWidget;
+    TspAlgorithmWidget *m_algorithmWidget;
+    ResultWidget *m_resultWidget;
 
 };
 

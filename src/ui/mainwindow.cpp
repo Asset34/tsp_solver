@@ -1,73 +1,28 @@
 #include "mainwindow.hpp"
 
-#include <QStatusBar>
+#include <QDockWidget>
+
+#include <ui/graph_drawer/graphdrawermanager.hpp>
+#include <ui/tspalgorithmwidget.hpp>
+#include <ui/resultwidget.hpp>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    // Create matrix widget
-    m_matrixWidget = new AdjacencyMatrixManagerWidget(5);
+    m_graphDrawerWidget = new GraphDrawerManager;
+    m_algorithmWidget = new TspAlgorithmWidget;
+    m_resultWidget = new ResultWidget;
 
-    // Create algorithm widget
-    m_algorithmWidget = new AlgorithmWidget;
+    QDockWidget *algorithmDock = new QDockWidget("TSP Algorithm", this);
+    algorithmDock->setContentsMargins(0, 0, 0, 0);
+    algorithmDock->setWidget(m_algorithmWidget);
 
-    // Create solve button
-    m_solveButton = new QPushButton("Solve");
+    QDockWidget *resultDock = new QDockWidget("Result", this);
+    resultDock->setContentsMargins(0, 0, 0, 0);
+    resultDock->setWidget(m_resultWidget);
 
-    // Create separator
-    m_separator = new QFrame;
-    m_separator->setFrameShape(QFrame::Shape::HLine);
-
-    // Create algorithm layout
-    m_algorithmLayout = new QVBoxLayout;
-    m_algorithmLayout->setContentsMargins(0, 0, 0, 0);
-    m_algorithmLayout->addWidget(m_solveButton);
-    m_algorithmLayout->addWidget(m_separator);
-    m_algorithmLayout->addWidget(m_algorithmWidget);
-
-    // Create main layout
-    m_mainlayout = new QHBoxLayout;
-    m_mainlayout->setContentsMargins(0, 0, 0, 0);
-    m_mainlayout->addWidget(m_matrixWidget, 2);
-    m_mainlayout->addLayout(m_algorithmLayout, 1);
-
-    // Create status bar label
-    m_statusLabel = new QLabel;
-
-    // Create status bar
-    statusBar()->addPermanentWidget(m_statusLabel);
-
-    // Create window
-    QWidget *centralWidget = new QWidget;
-    centralWidget->setLayout(m_mainlayout);
-    setCentralWidget(centralWidget);
-    setContentsMargins(5, 5, 5, 5);
-
-    // Create connections
-    connect(m_solveButton, &QPushButton::clicked, this, &MainWindow::solve);
-}
-
-void MainWindow::setStatus(const QString &text)
-{
-    m_statusLabel->setText(text);
-}
-
-void MainWindow::solve()
-{
-    AdjacencyMatrix matrix = m_matrixWidget->getMatrix();
-    if (!matrix.isValid()) {
-        setStatus("Invalid graph");
-
-        return;
-    }
-
-    setStatus("Solving ...");
-    bool result = m_algorithmWidget->solve(matrix);
-    if (!result) {
-        setStatus("Invalid result");
-
-        return;
-    }
-
-    setStatus("Success");
+    setWindowTitle("TSP Solver");
+    setCentralWidget(m_graphDrawerWidget);
+    addDockWidget(Qt::RightDockWidgetArea, algorithmDock);
+    addDockWidget(Qt::RightDockWidgetArea, resultDock);
 }
