@@ -33,7 +33,13 @@ SOURCES += \
     src/algorithms/antcolonyalgorithm.cpp \
     src/ui/graphdrawer.cpp \
     src/ui/graphdrawermanager.cpp \
-    src/ui/scrollablegraphdrawer.cpp
+    src/ui/scrollablegraphdrawer.cpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.cpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.cpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.cpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.cpp \
+    src/parameter_list_widget/guicreatingvisitor.cpp \
+    src/parameter_list_widget/parameterlistwidget.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -45,6 +51,14 @@ HEADERS += \
     src/algorithms/antcolonyalgorithm.hpp \
     src/ui/graphdrawer.hpp \
     src/ui/graphdrawermanager.hpp \
-    src/ui/scrollablegraphdrawer.hpp
+    src/ui/scrollablegraphdrawer.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/algorithm.hpp \
+    src/parameter_list_widget/parameterized_algorithm_base/parametervisitor.hpp \
+    src/parameter_list_widget/guicreatingvisitor.hpp \
+    src/parameter_list_widget/parameterlistwidget.hpp
 
 INCLUDEPATH += $$PWD/src
