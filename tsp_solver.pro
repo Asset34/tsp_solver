@@ -40,7 +40,8 @@ SOURCES += \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.cpp \
     src/parameter_list_widget/guicreatingvisitor.cpp \
     src/parameter_list_widget/parameterlistwidget.cpp \
-    src/ui/boxes/tspalgorithmselectbox.cpp
+    src/ui/boxes/tspalgorithmselectbox.cpp \
+    src/ui/tspalgorithmwidget.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -61,6 +62,7 @@ HEADERS += \
     src/parameter_list_widget/parameterized_algorithm_base/parametervisitor.hpp \
     src/parameter_list_widget/guicreatingvisitor.hpp \
     src/parameter_list_widget/parameterlistwidget.hpp \
-    src/ui/boxes/tspalgorithmselectbox.hpp
+    src/ui/boxes/tspalgorithmselectbox.hpp \
+    src/ui/tspalgorithmwidget.hpp
 
 INCLUDEPATH += $$PWD/src
