@@ -13,9 +13,6 @@ public:
 
     int getSize() const;
 
-    void generateComplete(int min, int max);
-    void clear();
-
 private:
     std::vector<std::vector<int>> m_data;
 
