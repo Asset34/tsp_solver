@@ -6,18 +6,12 @@
 class SimulatedAnnealingAlgorithm : public TspAlgorithm
 {
 public:
-    virtual Result run(const AdjacencyMatrix &matrix, const Parameters &p) override;
     virtual std::string getName() const override;
-    void clear();
+    virtual std::vector<Parameter*> getParameters() override;
+
+    virtual Result execute(const AdjacencyMatrix &matrix) override;
 
 private:   
-    Tour tourGenerationFunc(const Tour &tour) const;
-    int tourLengthFunc(const Tour &tour) const;
-    double temperatureFunc(double t) const;
-
-    bool stopCriterion(double t) const;
-
-    int m_iterations;
 
 };
 
