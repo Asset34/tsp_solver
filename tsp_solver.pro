@@ -31,9 +31,9 @@ SOURCES += \
     src/algorithms/nearestneighbouralgorithm.cpp \
     src/algorithms/simulatedannealingalgorithm.cpp \
     src/algorithms/antcolonyalgorithm.cpp \
-    src/ui/graphdrawer.cpp \
-    src/ui/graphdrawermanager.cpp \
-    src/ui/scrollablegraphdrawer.cpp \
+    src/ui/graph_drawer/graphdrawer.cpp \
+    src/ui/graph_drawer/graphdrawermanager.cpp \
+    src/ui/graph_drawer/scrollablegraphdrawer.cpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.cpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.cpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.cpp \
@@ -49,9 +49,9 @@ HEADERS += \
     src/algorithms/nearestneighbouralgorithm.hpp \
     src/algorithms/simulatedannealingalgorithm.hpp \
     src/algorithms/antcolonyalgorithm.hpp \
-    src/ui/graphdrawer.hpp \
-    src/ui/graphdrawermanager.hpp \
-    src/ui/scrollablegraphdrawer.hpp \
+    src/ui/graph_drawer/graphdrawer.hpp \
+    src/ui/graph_drawer/graphdrawermanager.hpp \
+    src/ui/graph_drawer/scrollablegraphdrawer.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.hpp \
