@@ -1,4 +1,4 @@
-#include "graphdrawermanager.hpp"
+#include "graphdrawerwidget.hpp"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -8,7 +8,7 @@
 
 #include "scrollablegraphdrawer.hpp"
 
-GraphDrawerManager::GraphDrawerManager(QWidget *parent)
+GraphDrawerWidget::GraphDrawerWidget(QWidget *parent)
     : QWidget(parent)
 {
     m_sizeSpinBox = new QSpinBox;
@@ -34,27 +34,32 @@ GraphDrawerManager::GraphDrawerManager(QWidget *parent)
 
     setLayout(m_mainLayout);
 
-    connect(m_generateButton, &QPushButton::clicked, this, &GraphDrawerManager::generate);
-    connect(m_clearButton, &QPushButton::clicked, this, &GraphDrawerManager::clear);
+    connect(m_generateButton, &QPushButton::clicked, this, &GraphDrawerWidget::generate);
+    connect(m_clearButton, &QPushButton::clicked, this, &GraphDrawerWidget::clear);
 }
 
-AdjacencyMatrix GraphDrawerManager::getMatrix() const
+AdjacencyMatrix GraphDrawerWidget::getMatrix() const
 {
     return m_drawer->getMatrix();
 }
 
-void GraphDrawerManager::setPath(const QVector<int> &numbers)
+void GraphDrawerWidget::setPath(const QVector<int> &numbers)
 {
     m_drawer->setPath(numbers);
 }
 
-void GraphDrawerManager::generate()
+void GraphDrawerWidget::generate()
 {
     int count = m_sizeSpinBox->value();
     m_drawer->generate(count);
 }
 
-void GraphDrawerManager::clear()
+void GraphDrawerWidget::clear()
 {
     m_drawer->clear();
+}
+
+void GraphDrawerWidget::clearPath()
+{
+    m_drawer->clearPath();
 }

@@ -30,3 +30,8 @@ void ScrollableGraphDrawer::clear()
 {
     m_graphDrawer->clear();
 }
+
+void ScrollableGraphDrawer::clearPath()
+{
+    m_graphDrawer->clearPath();
+}

@@ -1,5 +1,5 @@
-#ifndef GRAPHDRAWERMANAGER_HPP
-#define GRAPHDRAWERMANAGER_HPP
+#ifndef GRAPHDRAWERWIDGET_HPP
+#define GRAPHDRAWERWIDGET_HPP
 
 #include <QWidget>
 
@@ -12,15 +12,20 @@ class QSpinBox;
 class QPushButton;
 class ScrollableGraphDrawer;
 
-class GraphDrawerManager : public QWidget
+class GraphDrawerWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit GraphDrawerManager(QWidget *parent = nullptr);
+    explicit GraphDrawerWidget(QWidget *parent = nullptr);
 
     AdjacencyMatrix getMatrix() const;
     void setPath(const QVector<int> &numbers);
+
+public slots:
+    void generate();
+    void clear();
+    void clearPath();
 
 private:
     QVBoxLayout *m_mainLayout;
@@ -33,10 +38,6 @@ private:
     QPushButton *m_generateButton;
     QPushButton *m_clearButton;
 
-private slots:
-    void generate();
-    void clear();
-
 };
 
-#endif // GRAPHDRAWERMANAGER_HPP
+#endif // GRAPHDRAWERWIDGET_HPP
