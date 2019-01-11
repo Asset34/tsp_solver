@@ -5,7 +5,7 @@
 #include <QGroupBox>
 
 #include <ui/boxes/tspalgorithmselectbox.hpp>
-#include <ui/tspresultwidget.hpp>
+#include <ui/widgets/tspresultwidget.hpp>
 #include <parameter_list_widget/parameterlistwidget.hpp>
 
 TspAlgorithmWidget::TspAlgorithmWidget(QWidget *parent)

@@ -6,8 +6,8 @@
 
 #include <QVector>
 
-#include <ui/graph_drawer/graphdrawerwidget.hpp>
-#include <ui/tspalgorithmwidget.hpp>
+#include <ui/widgets/graph_drawer/graphdrawerwidget.hpp>
+#include <ui/widgets/tspalgorithmwidget.hpp>
 
 TspSolverWidget::TspSolverWidget(QWidget *parent)
     : QWidget(parent)

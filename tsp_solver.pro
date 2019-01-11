@@ -31,9 +31,9 @@ SOURCES += \
     src/algorithms/nearestneighbouralgorithm.cpp \
     src/algorithms/simulatedannealingalgorithm.cpp \
     src/algorithms/antcolonyalgorithm.cpp \
-    src/ui/graph_drawer/graphdrawer.cpp \
-    src/ui/graph_drawer/graphdrawerwidget.cpp \
-    src/ui/graph_drawer/scrollablegraphdrawer.cpp \
+    src/ui/widgets/graph_drawer/graphdrawer.cpp \
+    src/ui/widgets/graph_drawer/graphdrawerwidget.cpp \
+    src/ui/widgets/graph_drawer/scrollablegraphdrawer.cpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.cpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.cpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.cpp \
@@ -41,9 +41,9 @@ SOURCES += \
     src/parameter_list_widget/guicreatingvisitor.cpp \
     src/parameter_list_widget/parameterlistwidget.cpp \
     src/ui/boxes/tspalgorithmselectbox.cpp \
-    src/ui/tspalgorithmwidget.cpp \
-    src/ui/tspresultwidget.cpp \
-    src/ui/tspsolverwidget.cpp
+    src/ui/widgets/tspalgorithmwidget.cpp \
+    src/ui/widgets/tspresultwidget.cpp \
+    src/ui/widgets/tspsolverwidget.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -53,9 +53,9 @@ HEADERS += \
     src/algorithms/nearestneighbouralgorithm.hpp \
     src/algorithms/simulatedannealingalgorithm.hpp \
     src/algorithms/antcolonyalgorithm.hpp \
-    src/ui/graph_drawer/graphdrawer.hpp \
-    src/ui/graph_drawer/graphdrawerwidget.hpp \
-    src/ui/graph_drawer/scrollablegraphdrawer.hpp \
+    src/ui/widgets/graph_drawer/graphdrawer.hpp \
+    src/ui/widgets/graph_drawer/graphdrawerwidget.hpp \
+    src/ui/widgets/graph_drawer/scrollablegraphdrawer.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.hpp \
@@ -65,8 +65,8 @@ HEADERS += \
     src/parameter_list_widget/guicreatingvisitor.hpp \
     src/parameter_list_widget/parameterlistwidget.hpp \
     src/ui/boxes/tspalgorithmselectbox.hpp \
-    src/ui/tspalgorithmwidget.hpp \
-    src/ui/tspresultwidget.hpp \
-    src/ui/tspsolverwidget.hpp
+    src/ui/widgets/tspalgorithmwidget.hpp \
+    src/ui/widgets/tspresultwidget.hpp \
+    src/ui/widgets/tspsolverwidget.hpp
 
 INCLUDEPATH += $$PWD/src
