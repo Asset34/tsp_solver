@@ -3,14 +3,11 @@
 
 #include <QWidget>
 
-//#include <QVector>
-
 #include <algorithms/tspalgorithm.hpp>
 
 #include <adjacencymatrix.hpp>
 
 class QVBoxLayout;
-class QPushButton;
 class TspAlgorithmSelectBox;
 class ParameterListWidget;
 class TspResultWidget;
@@ -22,11 +19,7 @@ class TspAlgorithmWidget : public QWidget
 public:
     explicit TspAlgorithmWidget(QWidget *parent = nullptr);
 
-    const TspResult &getResult() const;
-
-public slots:
-    void changeAlgorithm(TspAlgorithm *algorithm);
-    void execute(const AdjacencyMatrix &matrix);
+    TspResult execute(const AdjacencyMatrix &matrix);
 
 private:
     QVBoxLayout *m_layout;
@@ -36,10 +29,9 @@ private:
     TspResultWidget *m_resultWidget;
 
     TspAlgorithm *m_currentAlgorithm;
-    TspResult m_lastResult;
 
-signals:
-    void executed();
+private slots:
+    void changeAlgorithm(TspAlgorithm *algorithm);
 
 };
 

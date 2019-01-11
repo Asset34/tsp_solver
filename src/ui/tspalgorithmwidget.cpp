@@ -4,15 +4,12 @@
 
 #include <QGroupBox>
 
-#include <QPushButton>
-
 #include <ui/boxes/tspalgorithmselectbox.hpp>
-#include <parameter_list_widget/parameterlistwidget.hpp>
 #include <ui/tspresultwidget.hpp>
+#include <parameter_list_widget/parameterlistwidget.hpp>
 
 TspAlgorithmWidget::TspAlgorithmWidget(QWidget *parent)
-    : QWidget(parent),
-      m_lastResult{.status = false}
+    : QWidget(parent)
 {
     m_algorithmSelectBox = new TspAlgorithmSelectBox;
 
@@ -52,23 +49,16 @@ TspAlgorithmWidget::TspAlgorithmWidget(QWidget *parent)
         );
 }
 
-const TspResult &TspAlgorithmWidget::getResult() const
+TspResult TspAlgorithmWidget::execute(const AdjacencyMatrix &matrix)
 {
-    return m_lastResult;
+    TspResult result = m_currentAlgorithm->execute(matrix);
+    m_resultWidget->setResult(result);
+
+    return result;
 }
 
 void TspAlgorithmWidget::changeAlgorithm(TspAlgorithm *algorithm)
 {
     m_currentAlgorithm = algorithm;
     m_parameterListWidget->updateWith(*algorithm);
-}
-
-void TspAlgorithmWidget::execute(const AdjacencyMatrix &matrix)
-{
-    TspResult result = m_currentAlgorithm->execute(matrix);
-
-    m_lastResult = result;
-    m_resultWidget->setResult(result);
-
-    emit executed();
 }

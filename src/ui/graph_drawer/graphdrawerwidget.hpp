@@ -25,7 +25,6 @@ public:
 public slots:
     void generate();
     void clear();
-    void clearPath();
 
 private:
     QVBoxLayout *m_mainLayout;

@@ -62,12 +62,6 @@ void GraphDrawer::clear()
     update();
 }
 
-void GraphDrawer::clearPath()
-{
-    m_path.clear();
-    update();
-}
-
 void GraphDrawer::paintEvent(QPaintEvent */*event*/)
 {
     QPainter painter(this);

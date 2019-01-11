@@ -58,8 +58,3 @@ void GraphDrawerWidget::clear()
 {
     m_drawer->clear();
 }
-
-void GraphDrawerWidget::clearPath()
-{
-    m_drawer->clearPath();
-}

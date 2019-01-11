@@ -32,7 +32,7 @@ SOURCES += \
     src/algorithms/simulatedannealingalgorithm.cpp \
     src/algorithms/antcolonyalgorithm.cpp \
     src/ui/graph_drawer/graphdrawer.cpp \
-    src/ui/graph_drawer/graphdrawermanager.cpp \
+    src/ui/graph_drawer/graphdrawerwidget.cpp \
     src/ui/graph_drawer/scrollablegraphdrawer.cpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.cpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.cpp \
@@ -42,7 +42,8 @@ SOURCES += \
     src/parameter_list_widget/parameterlistwidget.cpp \
     src/ui/boxes/tspalgorithmselectbox.cpp \
     src/ui/tspalgorithmwidget.cpp \
-    src/ui/resultwidget.cpp
+    src/ui/tspresultwidget.cpp \
+    src/ui/tspsolverwidget.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -53,7 +54,7 @@ HEADERS += \
     src/algorithms/simulatedannealingalgorithm.hpp \
     src/algorithms/antcolonyalgorithm.hpp \
     src/ui/graph_drawer/graphdrawer.hpp \
-    src/ui/graph_drawer/graphdrawermanager.hpp \
+    src/ui/graph_drawer/graphdrawerwidget.hpp \
     src/ui/graph_drawer/scrollablegraphdrawer.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.hpp \
     src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.hpp \
@@ -65,6 +66,7 @@ HEADERS += \
     src/parameter_list_widget/parameterlistwidget.hpp \
     src/ui/boxes/tspalgorithmselectbox.hpp \
     src/ui/tspalgorithmwidget.hpp \
-    src/ui/resultwidget.hpp
+    src/ui/tspresultwidget.hpp \
+    src/ui/tspsolverwidget.hpp
 
 INCLUDEPATH += $$PWD/src

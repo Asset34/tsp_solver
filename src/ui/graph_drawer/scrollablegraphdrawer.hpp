@@ -18,7 +18,6 @@ public:
 public slots:
     void generate(int count);
     void clear();
-    void clearPath();
 
 private:
     GraphDrawer *m_graphDrawer;

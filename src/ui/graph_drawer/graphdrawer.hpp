@@ -16,12 +16,12 @@ public:
     explicit GraphDrawer(QWidget *parent = nullptr);
 
     AdjacencyMatrix getMatrix() const;
+
     void setPath(const QVector<int> &numbers);
 
 public slots:
     void generate(int count);
     void clear();
-    void clearPath();
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;
