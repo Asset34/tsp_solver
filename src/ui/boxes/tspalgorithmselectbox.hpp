@@ -16,11 +16,11 @@ public:
 
     TspAlgorithm *getAlgorithm() const;
 
+public slots:
+    void changeAlgorithm(int index);
+
 private:
     QVector<TspAlgorithm*> m_algorithms;
-
-private slots:
-    void changeAlgorithm(int index);
 
 signals:
     void algorithmChanged(TspAlgorithm *algorithm);
