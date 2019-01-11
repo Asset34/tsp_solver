@@ -21,4 +21,5 @@ std::vector<Parameter*> NearestNeighbourAlgorithm::getParameters()
 TspResult NearestNeighbourAlgorithm::execute(const AdjacencyMatrix &matrix)
 {
     // TODO
+    return {.status = false};
 }

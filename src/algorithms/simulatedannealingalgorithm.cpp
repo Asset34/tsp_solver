@@ -14,4 +14,5 @@ std::vector<Parameter*> SimulatedAnnealingAlgorithm::getParameters()
 TspResult SimulatedAnnealingAlgorithm::execute(const AdjacencyMatrix &matrix)
 {
     // TODO
+    return {.status = false};
 }

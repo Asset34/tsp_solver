@@ -14,4 +14,5 @@ std::vector<Parameter*> AntColonyAlgorithm::getParameters()
 TspResult AntColonyAlgorithm::execute(const AdjacencyMatrix &matrix)
 {
     // TODO
+    return {.status = false};
 }
