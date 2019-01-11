@@ -1,11 +1,11 @@
-#include "resultwidget.hpp"
+#include "tspresultwidget.hpp"
 
 #include <QVBoxLayout>
 #include <QFormLayout>
 #include <QLabel>
 #include <QTextEdit>
 
-ResultWidget::ResultWidget(QWidget *parent)
+TspResultWidget::TspResultWidget(QWidget *parent)
     : QWidget(parent)
 {
     m_lengthLabel = new QLabel;
@@ -28,14 +28,14 @@ ResultWidget::ResultWidget(QWidget *parent)
     setLayout(m_mainLayout);
 }
 
-void ResultWidget::setResult(const TspResult &result)
+void TspResultWidget::setResult(const TspResult &result)
 {
     m_lengthLabel->setText(QString::number(result.length));
     m_iterationsLabel->setText(QString::number(result.iterations));
     m_pathTextEdit->setText(buildTourString(result.tour));
 }
 
-QString ResultWidget::buildTourString(const std::vector<int> &tour) const
+QString TspResultWidget::buildTourString(const std::vector<int> &tour) const
 {
     QString tourStr;
 

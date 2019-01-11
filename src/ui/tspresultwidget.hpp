@@ -1,5 +1,5 @@
-#ifndef RESULTWIDGET_HPP
-#define RESULTWIDGET_HPP
+#ifndef TSPRESULTWIDGET_HPP
+#define TSPRESULTWIDGET_HPP
 
 #include <QWidget>
 
@@ -10,12 +10,12 @@ class QFormLayout;
 class QLabel;
 class QTextEdit;
 
-class ResultWidget : public QWidget
+class TspResultWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ResultWidget(QWidget *parent = nullptr);
+    explicit TspResultWidget(QWidget *parent = nullptr);
 
     void setResult(const TspResult &result);
 
@@ -32,4 +32,4 @@ private:
 
 };
 
-#endif // RESULTWIDGET_HPP
+#endif // TSPRESULTWIDGET_HPP
