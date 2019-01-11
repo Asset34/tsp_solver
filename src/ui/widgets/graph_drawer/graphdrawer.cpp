@@ -124,7 +124,7 @@ void GraphDrawer::drawNumbers(QPainter &painter)
     painter.setPen(NUMBER_COLOR);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    QFont font("Times", 10);
+    QFont font("Times", NUMBER_FONT_SIZE);
     QFontMetrics metrics(font);
     int dx, dy;
     QPoint pos;

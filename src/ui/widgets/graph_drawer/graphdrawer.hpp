@@ -37,8 +37,9 @@ private:
     void drawNumbers(QPainter &painter);
     void drawPath(QPainter &painter);
 
-    const int VERTEX_RADIUS = 15;
+    const int VERTEX_RADIUS = 12;
     const int PADDING = 20;
+    const int NUMBER_FONT_SIZE = 8;
     const QColor VERTEX_COLOR = Qt::yellow;
     const QColor NUMBER_COLOR = Qt::black;
     const QColor PATH_COLOR = Qt::red;
