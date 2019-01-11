@@ -8,18 +8,18 @@
 
 #include <parameter_list_widget/parameterized_algorithm_base/algorithm.hpp>
 
+struct TspResult
+{
+    bool status;
+    int length;
+    int iterations;
+    std::vector<int> tour;
+};
+
 class TspAlgorithm : public Algorithm
 {
 public:
-    struct Result
-    {
-        bool status;
-        int length;
-        int iterations;
-        std::vector<int> tour;
-    };
-
-    virtual Result execute(const AdjacencyMatrix &matrix) = 0;
+    virtual TspResult execute(const AdjacencyMatrix &matrix) = 0;
 
 };
 

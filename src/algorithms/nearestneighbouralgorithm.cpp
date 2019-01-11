@@ -18,7 +18,7 @@ std::vector<Parameter*> NearestNeighbourAlgorithm::getParameters()
     return parameters;
 }
 
-TspAlgorithm::Result NearestNeighbourAlgorithm::execute(const AdjacencyMatrix &matrix)
+TspResult NearestNeighbourAlgorithm::execute(const AdjacencyMatrix &matrix)
 {
     // TODO
 }

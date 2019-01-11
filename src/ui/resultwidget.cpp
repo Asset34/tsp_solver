@@ -28,7 +28,7 @@ ResultWidget::ResultWidget(QWidget *parent)
     setLayout(m_mainLayout);
 }
 
-void ResultWidget::setResult(const TspAlgorithm::Result &result)
+void ResultWidget::setResult(const TspResult &result)
 {
     m_lengthLabel->setText(QString::number(result.length));
     m_iterationsLabel->setText(QString::number(result.iterations));

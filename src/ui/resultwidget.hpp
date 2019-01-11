@@ -17,7 +17,7 @@ class ResultWidget : public QWidget
 public:
     explicit ResultWidget(QWidget *parent = nullptr);
 
-    void setResult(const TspAlgorithm::Result &result);
+    void setResult(const TspResult &result);
 
 private:
     QString buildTourString(const std::vector<int> &tour) const;
