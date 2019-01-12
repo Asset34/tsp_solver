@@ -121,10 +121,12 @@ void GraphDrawer::drawNumbers(QPainter &painter)
 {
     painter.save();
 
+    QFont font("Times", NUMBER_FONT_SIZE);
+
     painter.setPen(NUMBER_COLOR);
     painter.setRenderHint(QPainter::Antialiasing);
+    painter.setFont(font);
 
-    QFont font("Times", NUMBER_FONT_SIZE);
     QFontMetrics metrics(font);
     int dx, dy;
     QPoint pos;
@@ -148,6 +150,7 @@ void GraphDrawer::drawPath(QPainter &painter)
     painter.setPen(QPen(PATH_COLOR, 2));
     painter.setRenderHint(QPainter::Antialiasing);
 
+    painter.drawPolyline(m_path);
 
     painter.restore();
 }
