@@ -21,7 +21,7 @@ TspAlgorithmWidget::TspAlgorithmWidget(QWidget *parent)
     m_parameterListWidget->updateWith(*m_currentAlgorithm);
     QGroupBox *inputGroupBox = new QGroupBox("Input");
     QVBoxLayout *inputLayout = new QVBoxLayout;
-    inputLayout->setContentsMargins(5, 0, 5, 0);
+    inputLayout->setContentsMargins(5, 0, 5, 5);
     inputLayout->addWidget(m_parameterListWidget);
     inputGroupBox->setLayout(inputLayout);
 
@@ -29,7 +29,7 @@ TspAlgorithmWidget::TspAlgorithmWidget(QWidget *parent)
     m_resultWidget = new TspResultWidget;
     QGroupBox *resultGroupBox = new QGroupBox("Result");
     QVBoxLayout *resultLayout = new QVBoxLayout;
-    resultLayout->setContentsMargins(5, 0, 5, 0);
+    resultLayout->setContentsMargins(5, 0, 5, 5);
     resultLayout->addWidget(m_resultWidget);
     resultGroupBox->setLayout(resultLayout);
 
