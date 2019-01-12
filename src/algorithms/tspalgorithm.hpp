@@ -10,16 +10,18 @@
 
 struct TspResult
 {
-    bool status;
     int length;
     int iterations;
-    std::vector<int> tour;
+    std::vector<int> path;
 };
 
 class TspAlgorithm : public Algorithm
 {
 public:
     virtual TspResult execute(const AdjacencyMatrix &matrix) = 0;
+
+protected:
+    int computeLength(const std::vector<int> path, const AdjacencyMatrix &matrix) const;
 
 };
 
