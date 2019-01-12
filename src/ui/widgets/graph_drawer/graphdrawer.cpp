@@ -148,7 +148,6 @@ void GraphDrawer::drawPath(QPainter &painter)
     painter.setPen(QPen(PATH_COLOR, 2));
     painter.setRenderHint(QPainter::Antialiasing);
 
-    painter.drawLines(m_path);
 
     painter.restore();
 }

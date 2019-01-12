@@ -5,8 +5,6 @@
 #include <algorithm>
 #include <numeric>
 
-#include <QDebug>
-
 NearestNeighbourAlgorithm::NearestNeighbourAlgorithm()
     : m_start("Start", 0, 1e9, 0)
 {
