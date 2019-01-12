@@ -16,7 +16,7 @@ public:
     virtual TspResult execute(const AdjacencyMatrix &matrix) override;
 
 private:
-    IntParameter m_iterations;
+    IntParameter m_start;
 
 };
 

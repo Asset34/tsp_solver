@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = tsp_solver
 TEMPLATE = app
 
+CONFIG += c++11
+
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -43,7 +45,8 @@ SOURCES += \
     src/ui/boxes/tspalgorithmselectbox.cpp \
     src/ui/widgets/tspalgorithmwidget.cpp \
     src/ui/widgets/tspresultwidget.cpp \
-    src/ui/widgets/tspsolverwidget.cpp
+    src/ui/widgets/tspsolverwidget.cpp \
+    src/algorithms/tspalgorithm.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
