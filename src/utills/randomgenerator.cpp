@@ -63,9 +63,6 @@ std::vector<int> RandomGenerator::generateSet(int count, int min, int max)
 
 bool RandomGenerator::generateAction(double chance)
 {
-    std::uniform_real_distribution<double> distr(0.0, 1.0);
-
-//    double result = distr(m_engine);
     double result = generateDouble(0.0, 1.0);
     if (result <= chance) {
         return true;
