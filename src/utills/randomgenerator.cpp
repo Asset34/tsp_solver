@@ -1,6 +1,7 @@
 #include "randomgenerator.hpp"
 
 #include <algorithm>
+#include <numeric>
 #include <chrono>
 
 //std::default_random_engine RandomGenerator::m_engine(
@@ -51,17 +52,11 @@ int RandomGenerator::generateRoulette(const std::vector<double> &sectors)
 
 std::vector<int> RandomGenerator::generateSet(int count, int min, int max)
 {
-    // Create range vector
     std::vector<int> values(max - min + 1);
-    for (int i = 0; i < values.size(); i++) {
-        values[i] = min + i;
-    }
 
-    // Generate
+    std::iota(values.begin(), values.end(), min);
     std::shuffle(values.begin(), values.end(), m_engine);
-    if (count) {
-        values.resize(count);
-    }
+    values.resize(count);
 
     return values;
 }
