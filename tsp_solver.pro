@@ -28,7 +28,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         src/main.cpp \
     src/ui/mainwindow.cpp \
-    src/adjacencymatrix.cpp \
     src/utills/randomgenerator.cpp \
     src/algorithms/nearestneighbouralgorithm.cpp \
     src/algorithms/simulatedannealingalgorithm.cpp \
@@ -46,11 +45,11 @@ SOURCES += \
     src/ui/widgets/tspalgorithmwidget.cpp \
     src/ui/widgets/tspresultwidget.cpp \
     src/ui/widgets/tspsolverwidget.cpp \
-    src/algorithms/tspalgorithm.cpp
+    src/algorithms/tspalgorithm.cpp \
+    src/matrix.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
-    src/adjacencymatrix.hpp \
     src/utills/randomgenerator.hpp \
     src/algorithms/tspalgorithm.hpp \
     src/algorithms/nearestneighbouralgorithm.hpp \
@@ -70,6 +69,7 @@ HEADERS += \
     src/ui/boxes/tspalgorithmselectbox.hpp \
     src/ui/widgets/tspalgorithmwidget.hpp \
     src/ui/widgets/tspresultwidget.hpp \
-    src/ui/widgets/tspsolverwidget.hpp
+    src/ui/widgets/tspsolverwidget.hpp \
+    src/matrix.hpp
 
 INCLUDEPATH += $$PWD/src
