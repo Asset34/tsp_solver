@@ -1,7 +1,7 @@
 #ifndef TOUR_HPP
 #define TOUR_HPP
 
-#include <list>
+#include <vector>
 #include <string>
 
 #include "matrix.hpp"
@@ -11,13 +11,14 @@ class Tour
 public:
     explicit Tour(const Matrix &adjacencyMatrix);
 
+    int operator[](int index) const;
+    int &operator[](int index);
+
     bool operator<(const Tour &tour) const;
 
-    std::list<int>::const_iterator getCBegin() const;
-    std::list<int>::const_iterator getCEnd() const;
-
     int getSize() const;
-    double getLength() const;
+
+    double computeLength() const;
 
     void addVertex(int vertex);
     void generate(int count);
@@ -31,9 +32,7 @@ public:
     std::string toString() const;
 
 private:
-    std::list<int> m_vertices;
-    double m_length;
-
+    std::vector<int> m_vertices;
     const Matrix *m_adjacencyMatrix;
 
 };

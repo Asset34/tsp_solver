@@ -30,7 +30,7 @@ TspResultWidget::TspResultWidget(QWidget *parent)
 
 void TspResultWidget::setResult(const TspResult &result)
 {
-    m_lengthLabel->setText(QString::number(result.tour.getLength()));
+    m_lengthLabel->setText(QString::number(result.tour.computeLength()));
     m_iterationsLabel->setText(QString::number(result.iterations));
     m_pathTextEdit->setText(QString::fromStdString(result.tour.toString()));
 }

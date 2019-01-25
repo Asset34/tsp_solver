@@ -6,24 +6,23 @@
 #include <utills/randomgenerator.hpp>
 
 Tour::Tour(const Matrix &adjacencyMatrix)
-    : m_adjacencyMatrix(&adjacencyMatrix),
-      m_length(0.0)
+    : m_adjacencyMatrix(&adjacencyMatrix)
 {
+}
+
+int Tour::operator[](int index) const
+{
+    return m_vertices[index];
+}
+
+int &Tour::operator[](int index)
+{
+    return m_vertices[index];
 }
 
 bool Tour::operator<(const Tour &tour) const
 {
-    return m_length < tour.m_length;
-}
-
-std::list<int>::const_iterator Tour::getCBegin() const
-{
-    return m_vertices.cbegin();
-}
-
-std::list<int>::const_iterator Tour::getCEnd() const
-{
-    return m_vertices.cend();
+    return computeLength() < tour.computeLength();
 }
 
 int Tour::getSize() const
@@ -31,60 +30,55 @@ int Tour::getSize() const
     return m_vertices.size();
 }
 
-double Tour::getLength() const
+double Tour::computeLength() const
 {
-    return m_length;
+    double length = 0.0;
+    for (int i = 1; i < m_vertices.size(); i++) {
+        length += (*m_adjacencyMatrix)[ m_vertices[i - 1] ][ m_vertices[i] ];
+    }
+
+    return length;
 }
 
 void Tour::addVertex(int vertex)
 {
-    // Update length
-    int last = m_vertices.back();
-    m_length += (*m_adjacencyMatrix)[last][vertex];
-
     m_vertices.push_back(vertex);
 }
 
 void Tour::generate(int count)
 {
-    std::vector<int> generated = RandomGenerator::generateSet(
-                                        count,
-                                        0,
-                                        m_adjacencyMatrix->getSize() - 1
-                                     );
+    clear();
 
-    std::copy(generated.begin(), generated.end(), std::back_inserter(m_vertices));
+    m_vertices =
+        RandomGenerator::generateSet(
+            count,
+            0,
+            m_adjacencyMatrix->getSize() - 1
+        );
 }
 
 void Tour::clear()
 {
     m_vertices.clear();
-    m_length = 0.0;
 }
 
 void Tour::close()
 {
-    if (m_vertices.size()) {
-        m_vertices.push_back(m_vertices.front());
+    if (!m_vertices.empty()) {
+        addVertex(m_vertices.front());
     }
 }
 
 void Tour::closeLast()
 {
-    if (m_vertices.size()) {
+    if (!m_vertices.empty()) {
         m_vertices.back() = m_vertices.front();
     }
 }
 
 void Tour::inverse(int start, int end)
 {
-    // Get appropriate iterators
-    auto startIt = m_vertices.begin();
-    std::advance(startIt, start);
-    auto endIt = m_vertices.begin();
-    std::advance(endIt, end + 1);
-
-    std::reverse(startIt, endIt);
+    std::reverse(m_vertices.begin() + start, m_vertices.begin() + end + 1);
 }
 
 void Tour::generateInverse()
