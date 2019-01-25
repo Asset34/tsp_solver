@@ -12,7 +12,7 @@ class ScrollableGraphDrawer : public QScrollArea
 public:
     explicit ScrollableGraphDrawer(QWidget *parent = nullptr);
 
-    AdjacencyMatrix getMatrix() const;
+    Matrix getMatrix() const;
     void setPath(const QVector<int> &numbers);
 
 public slots:

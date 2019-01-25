@@ -6,7 +6,7 @@
 #include <QList>
 #include <QVector>
 
-#include <adjacencymatrix.hpp>
+#include <matrix.hpp>
 
 class GraphDrawer : public QWidget
 {
@@ -15,7 +15,7 @@ class GraphDrawer : public QWidget
 public:
     explicit GraphDrawer(QWidget *parent = nullptr);
 
-    AdjacencyMatrix getMatrix() const;
+    Matrix getMatrix() const;
 
     void setPath(const QVector<int> &numbers);
 

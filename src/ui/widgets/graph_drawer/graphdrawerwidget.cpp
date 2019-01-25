@@ -38,7 +38,7 @@ GraphDrawerWidget::GraphDrawerWidget(QWidget *parent)
     connect(m_clearButton, &QPushButton::clicked, this, &GraphDrawerWidget::clear);
 }
 
-AdjacencyMatrix GraphDrawerWidget::getMatrix() const
+Matrix GraphDrawerWidget::getMatrix() const
 {
     return m_drawer->getMatrix();
 }

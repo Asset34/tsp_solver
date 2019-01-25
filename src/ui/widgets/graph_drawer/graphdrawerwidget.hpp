@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-#include <adjacencymatrix.hpp>
+#include <matrix.hpp>
 
 class QVBoxLayout;
 class QHBoxLayout;
@@ -19,7 +19,7 @@ class GraphDrawerWidget : public QWidget
 public:
     explicit GraphDrawerWidget(QWidget *parent = nullptr);
 
-    AdjacencyMatrix getMatrix() const;
+    Matrix getMatrix() const;
     void setPath(const QVector<int> &numbers);
 
 public slots:

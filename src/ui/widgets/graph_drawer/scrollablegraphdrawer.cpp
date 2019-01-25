@@ -11,7 +11,7 @@ ScrollableGraphDrawer::ScrollableGraphDrawer(QWidget *parent)
     setWidget(m_graphDrawer);
 }
 
-AdjacencyMatrix ScrollableGraphDrawer::getMatrix() const
+Matrix ScrollableGraphDrawer::getMatrix() const
 {
     return m_graphDrawer->getMatrix();
 }
