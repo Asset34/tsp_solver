@@ -7,6 +7,7 @@
 #include <QVector>
 
 #include <matrix.hpp>
+#include <tour.hpp>
 
 class GraphDrawer : public QWidget
 {
@@ -18,6 +19,7 @@ public:
     Matrix getMatrix() const;
 
     void setPath(const QVector<int> &numbers);
+    void setTour(const Tour &tour);
 
 public slots:
     void generate(int count);
@@ -35,7 +37,7 @@ private:
 
     void drawVerticies(QPainter &painter);
     void drawNumbers(QPainter &painter);
-    void drawPath(QPainter &painter);
+    void drawTour(QPainter &painter);
 
     const int VERTEX_RADIUS = 12;
     const int PADDING = 20;
@@ -45,7 +47,7 @@ private:
     const QColor PATH_COLOR = Qt::red;
 
     QList<Vertex> m_vertices;
-    QVector<Vertex> m_path;
+    Tour m_tour;
 
 };
 

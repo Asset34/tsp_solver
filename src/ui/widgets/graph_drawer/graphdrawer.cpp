@@ -12,7 +12,8 @@
 #include <utills/randomgenerator.hpp>
 
 GraphDrawer::GraphDrawer(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_tour(Matrix(0))
 {
 }
 
@@ -31,13 +32,9 @@ Matrix GraphDrawer::getMatrix() const
     return matrix;
 }
 
-void GraphDrawer::setPath(const QVector<int> &numbers)
+void GraphDrawer::setTour(const Tour &tour)
 {
-    m_path.resize(numbers.size());
-    for (int i = 0; i < numbers.size(); i++) {
-        m_path[i] = m_vertices[numbers[i]];
-    }
-
+    m_tour = tour;
     update();
 }
 
@@ -56,7 +53,7 @@ void GraphDrawer::generate(int count)
 void GraphDrawer::clear()
 {
     m_vertices.clear();
-    m_path.clear();
+    m_tour.clear();
 
     setMinimumSize(QSize(0, 0));
     update();
@@ -67,7 +64,7 @@ void GraphDrawer::paintEvent(QPaintEvent */*event*/)
     QPainter painter(this);
     painter.translate(width()/2.0, height()/2.0);
 
-    drawPath(painter);
+    drawTour(painter);
     drawVerticies(painter);
     drawNumbers(painter);
 
@@ -143,14 +140,20 @@ void GraphDrawer::drawNumbers(QPainter &painter)
     painter.restore();
 }
 
-void GraphDrawer::drawPath(QPainter &painter)
+void GraphDrawer::drawTour(QPainter &painter)
 {
     painter.save();
 
     painter.setPen(QPen(PATH_COLOR, 2));
     painter.setRenderHint(QPainter::Antialiasing);
 
-    painter.drawPolyline(m_path);
+//    painter.drawPolyline(m_path);
+//    for (int vertex : m_tour) {
+
+//    }
+    for (auto it = m_tour.getCBegin(); it != m_tour.getCEnd(); ++it) {
+
+    }
 
     painter.restore();
 }

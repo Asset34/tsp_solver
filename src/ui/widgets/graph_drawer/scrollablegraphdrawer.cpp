@@ -16,9 +16,9 @@ Matrix ScrollableGraphDrawer::getMatrix() const
     return m_graphDrawer->getMatrix();
 }
 
-void ScrollableGraphDrawer::setPath(const QVector<int> &numbers)
+void ScrollableGraphDrawer::setTour(const Tour &tour)
 {
-    m_graphDrawer->setPath(numbers);
+    m_graphDrawer->setTour(tour);
 }
 
 void ScrollableGraphDrawer::generate(int count)

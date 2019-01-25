@@ -43,9 +43,9 @@ Matrix GraphDrawerWidget::getMatrix() const
     return m_drawer->getMatrix();
 }
 
-void GraphDrawerWidget::setPath(const QVector<int> &numbers)
+void GraphDrawerWidget::setTour(const Tour &tour)
 {
-    m_drawer->setPath(numbers);
+    m_drawer->setTour(tour);
 }
 
 void GraphDrawerWidget::generate()

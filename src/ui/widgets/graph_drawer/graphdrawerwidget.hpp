@@ -4,6 +4,7 @@
 #include <QWidget>
 
 #include <matrix.hpp>
+#include <tour.hpp>
 
 class QVBoxLayout;
 class QHBoxLayout;
@@ -20,7 +21,7 @@ public:
     explicit GraphDrawerWidget(QWidget *parent = nullptr);
 
     Matrix getMatrix() const;
-    void setPath(const QVector<int> &numbers);
+    void setTour(const Tour &tour);
 
 public slots:
     void generate();
