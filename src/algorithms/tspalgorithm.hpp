@@ -4,24 +4,21 @@
 #include <vector>
 #include <string>
 
-#include "adjacencymatrix.hpp"
+#include "matrix.hpp"
+#include "tour.hpp"
 
 #include <parameter_list_widget/parameterized_algorithm_base/algorithm.hpp>
 
 struct TspResult
 {
-    int length;
     int iterations;
-    std::vector<int> path;
+    Tour tour;
 };
 
 class TspAlgorithm : public Algorithm
 {
 public:
-    virtual TspResult execute(const AdjacencyMatrix &matrix) = 0;
-
-protected:
-    int computeLength(const std::vector<int> path, const AdjacencyMatrix &matrix) const;
+    virtual TspResult execute(const Matrix &adjacencyMatrix) = 0;
 
 };
 
