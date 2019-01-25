@@ -45,8 +45,8 @@ SOURCES += \
     src/ui/widgets/tspalgorithmwidget.cpp \
     src/ui/widgets/tspresultwidget.cpp \
     src/ui/widgets/tspsolverwidget.cpp \
-    src/algorithms/tspalgorithm.cpp \
-    src/matrix.cpp
+    src/matrix.cpp \
+    src/tour.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -70,6 +70,7 @@ HEADERS += \
     src/ui/widgets/tspalgorithmwidget.hpp \
     src/ui/widgets/tspresultwidget.hpp \
     src/ui/widgets/tspsolverwidget.hpp \
-    src/matrix.hpp
+    src/matrix.hpp \
+    src/tour.hpp
 
 INCLUDEPATH += $$PWD/src
