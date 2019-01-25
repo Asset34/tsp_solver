@@ -3,7 +3,7 @@
 #include <sstream>
 
 Tour::Tour(const Matrix &adjacencyMatrix)
-    : m_adjacencyMatrix(adjacencyMatrix),
+    : m_adjacencyMatrix(&adjacencyMatrix),
       m_length(0.0)
 {
 }
@@ -37,7 +37,7 @@ void Tour::addVertex(int vertex)
 {
     // Update length
     int last = m_vertices.back();
-    m_length += m_adjacencyMatrix[last][vertex];
+    m_length += (*m_adjacencyMatrix)[last][vertex];
 
     m_vertices.push_back(vertex);
 }

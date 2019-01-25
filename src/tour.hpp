@@ -29,7 +29,7 @@ private:
     std::list<int> m_vertices;
     double m_length;
 
-    const Matrix &m_adjacencyMatrix;
+    const Matrix *m_adjacencyMatrix;
 
 };
 
