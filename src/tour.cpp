@@ -60,7 +60,7 @@ std::string Tour::toString() const
     std::ostringstream oss;
 
     for (int vertex : m_vertices) {
-        oss << "(" << vertex << ")" << "=>";
+        oss << "(" << vertex << ")" << " => ";
     }
 
     return oss.str();
