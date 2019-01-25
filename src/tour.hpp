@@ -20,6 +20,7 @@ public:
     double getLength() const;
 
     void addVertex(int vertex);
+    void generate(int count);
     void clear();
     void close();
 

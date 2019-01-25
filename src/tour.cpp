@@ -2,6 +2,8 @@
 
 #include <sstream>
 
+#include <utills/randomgenerator.hpp>
+
 Tour::Tour(const Matrix &adjacencyMatrix)
     : m_adjacencyMatrix(&adjacencyMatrix),
       m_length(0.0)
@@ -40,6 +42,17 @@ void Tour::addVertex(int vertex)
     m_length += (*m_adjacencyMatrix)[last][vertex];
 
     m_vertices.push_back(vertex);
+}
+
+void Tour::generate(int count)
+{
+    std::vector<int> generated = RandomGenerator::generateSet(
+                                        count,
+                                        0,
+                                        m_adjacencyMatrix->getSize() - 1
+                                     );
+
+    std::copy(generated.begin(), generated.end(), std::back_inserter(m_vertices));
 }
 
 void Tour::clear()
