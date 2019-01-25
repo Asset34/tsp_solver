@@ -1,5 +1,6 @@
 #include "tour.hpp"
 
+#include <algorithm>
 #include <sstream>
 
 #include <utills/randomgenerator.hpp>
@@ -66,6 +67,36 @@ void Tour::close()
     if (m_vertices.size()) {
         m_vertices.push_back(m_vertices.front());
     }
+}
+
+void Tour::closeLast()
+{
+    if (m_vertices.size()) {
+        m_vertices.back() = m_vertices.front();
+    }
+}
+
+void Tour::inverse(int start, int end)
+{
+    // Get appropriate iterators
+    auto startIt = m_vertices.begin();
+    std::advance(startIt, start);
+    auto endIt = m_vertices.begin();
+    std::advance(endIt, end + 1);
+
+    std::reverse(startIt, endIt);
+}
+
+void Tour::generateInverse()
+{
+    // Generate indexes
+    int start = RandomGenerator::generateInt(0, m_vertices.size() - 2);
+    int end = RandomGenerator::generateInt(0, m_vertices.size() - 2);
+    if (start > end) {
+        std::swap(start, end);
+    }
+
+    inverse(start, end);
 }
 
 std::string Tour::toString() const

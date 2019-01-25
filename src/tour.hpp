@@ -23,6 +23,10 @@ public:
     void generate(int count);
     void clear();
     void close();
+    void closeLast();
+
+    void inverse(int start, int end);
+    void generateInverse();
 
     std::string toString() const;
 
