@@ -47,7 +47,7 @@ private:
     const QColor PATH_COLOR = Qt::red;
 
     QList<Vertex> m_vertices;
-    Tour m_tour;
+    QVector<Vertex> m_tourVertices;
 
 };
 

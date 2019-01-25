@@ -12,8 +12,7 @@
 #include <utills/randomgenerator.hpp>
 
 GraphDrawer::GraphDrawer(QWidget *parent)
-    : QWidget(parent),
-      m_tour(Matrix(0))
+    : QWidget(parent)
 {
 }
 
@@ -34,7 +33,12 @@ Matrix GraphDrawer::getMatrix() const
 
 void GraphDrawer::setTour(const Tour &tour)
 {
-    m_tour = tour;
+    m_tourVertices.clear();
+    m_tourVertices.reserve(tour.getSize());
+    for (auto it = tour.getCBegin(); it !=tour.getCEnd(); ++it) {
+        m_tourVertices.push_back(m_vertices[*it]);
+    }
+
     update();
 }
 
@@ -53,7 +57,7 @@ void GraphDrawer::generate(int count)
 void GraphDrawer::clear()
 {
     m_vertices.clear();
-    m_tour.clear();
+    m_tourVertices.clear();
 
     setMinimumSize(QSize(0, 0));
     update();
@@ -147,13 +151,7 @@ void GraphDrawer::drawTour(QPainter &painter)
     painter.setPen(QPen(PATH_COLOR, 2));
     painter.setRenderHint(QPainter::Antialiasing);
 
-//    painter.drawPolyline(m_path);
-//    for (int vertex : m_tour) {
-
-//    }
-    for (auto it = m_tour.getCBegin(); it != m_tour.getCEnd(); ++it) {
-
-    }
+    painter.drawPolyline(m_tourVertices);
 
     painter.restore();
 }
