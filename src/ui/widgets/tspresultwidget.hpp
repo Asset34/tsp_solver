@@ -20,8 +20,6 @@ public:
     void setResult(const TspResult &result);
 
 private:
-    QString buildTourString(const std::vector<int> &tour) const;
-
     QVBoxLayout *m_mainLayout;
     QFormLayout *m_valuesLayout;
 
