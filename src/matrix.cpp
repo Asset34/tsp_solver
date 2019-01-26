@@ -24,18 +24,11 @@ int Matrix::getSize() const
     return m_data.size();
 }
 
-Matrix &Matrix::operator*(double value)
+void Matrix::multiply(int scalar)
 {
     for (int i = 0; i < getSize(); i++) {
         for (int j = 0; j < getSize(); j++) {
-            m_data[i][j] *= value;
+            m_data[i][j] *= scalar;
         }
     }
-
-    return *this;
-}
-
-Matrix &operator*(double value, Matrix &matrix)
-{
-    return matrix * value;
 }

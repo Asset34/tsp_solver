@@ -13,13 +13,11 @@ public:
 
     int getSize() const;
 
-    Matrix &operator*(double value);
+    void multiply(int scalar);
 
 private:
     std::vector<std::vector<double>> m_data;
 
 };
-
-Matrix &operator*(double value, Matrix &matrix);
 
 #endif // MATRIX_HPP
