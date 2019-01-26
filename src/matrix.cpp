@@ -24,7 +24,7 @@ int Matrix::getSize() const
     return m_data.size();
 }
 
-void Matrix::multiply(int scalar)
+void Matrix::multiply(double scalar)
 {
     for (int i = 0; i < getSize(); i++) {
         for (int j = 0; j < getSize(); j++) {

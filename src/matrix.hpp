@@ -13,7 +13,7 @@ public:
 
     int getSize() const;
 
-    void multiply(int scalar);
+    void multiply(double scalar);
 
 private:
     std::vector<std::vector<double>> m_data;
