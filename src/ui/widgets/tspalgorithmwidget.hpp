@@ -5,7 +5,7 @@
 
 #include <algorithms/tspalgorithm.hpp>
 
-#include <adjacencymatrix.hpp>
+#include <matrix.hpp>
 
 class QVBoxLayout;
 class TspAlgorithmSelectBox;
@@ -19,7 +19,7 @@ class TspAlgorithmWidget : public QWidget
 public:
     explicit TspAlgorithmWidget(QWidget *parent = nullptr);
 
-    TspResult execute(const AdjacencyMatrix &matrix);
+    TspResult execute(const Matrix &adjacencyMatrix);
 
 private:
     QVBoxLayout *m_layout;

@@ -47,8 +47,8 @@ void TspSolverWidget::clear()
 
 void TspSolverWidget::solve()
 {
-    AdjacencyMatrix matrix = m_graphDrawerWidget->getMatrix();
+    Matrix matrix = m_graphDrawerWidget->getMatrix();
     TspResult result = m_algorithmWidget->execute(matrix);
 
-    m_graphDrawerWidget->setPath(QVector<int>::fromStdVector(result.path));
+    m_graphDrawerWidget->setTour(result.tour);
 }

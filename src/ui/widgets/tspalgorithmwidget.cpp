@@ -49,9 +49,9 @@ TspAlgorithmWidget::TspAlgorithmWidget(QWidget *parent)
         );
 }
 
-TspResult TspAlgorithmWidget::execute(const AdjacencyMatrix &matrix)
+TspResult TspAlgorithmWidget::execute(const Matrix &adjacencyMatrix)
 {
-    TspResult result = m_currentAlgorithm->execute(matrix);
+    TspResult result = m_currentAlgorithm->execute(adjacencyMatrix);
     m_resultWidget->setResult(result);
 
     return result;
