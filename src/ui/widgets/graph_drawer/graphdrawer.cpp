@@ -33,10 +33,9 @@ Matrix GraphDrawer::getMatrix() const
 
 void GraphDrawer::setTour(const Tour &tour)
 {
-    m_tourVertices.clear();
-    m_tourVertices.reserve(tour.getSize());
-    for (auto it = tour.getCBegin(); it !=tour.getCEnd(); ++it) {
-        m_tourVertices.push_back(m_vertices[*it]);
+    m_tourVertices.resize(tour.getSize());
+    for (int i = 0; i < tour.getSize(); i++) {
+        m_tourVertices[i] = m_vertices[tour[i]];
     }
 
     update();
