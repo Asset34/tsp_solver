@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = tsp_solver
 TEMPLATE = app
 
+CONFIG -= app_bundle
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -46,7 +47,8 @@ SOURCES += \
     src/ui/widgets/tspresultwidget.cpp \
     src/ui/widgets/tspsolverwidget.cpp \
     src/matrix.cpp \
-    src/tour.cpp
+    src/tour.cpp \
+    src/algorithms/ant.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \

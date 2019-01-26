@@ -23,45 +23,38 @@ std::vector<Parameter*> NearestNeighbourAlgorithm::getParameters()
     return parameters;
 }
 
-TspResult NearestNeighbourAlgorithm::execute(const AdjacencyMatrix &matrix)
+TspResult NearestNeighbourAlgorithm::execute(const Matrix &adjacencyMatrix)
 {
-    // Init path
-    std::vector<int> path(matrix.getSize() + 1);
-    path[0] = m_start;
-    path[matrix.getSize()] = m_start;
-
-    // Init list of unvisited vertices
-    std::list<int> unvisited(matrix.getSize());
+    std::list<int> unvisited(adjacencyMatrix.getSize());
     std::iota(unvisited.begin(), unvisited.end(), 0);
-    unvisited.remove(m_start);
 
-    std::vector<int> weights;
+    Tour tour(adjacencyMatrix);
     int cur = m_start;
-    for (int i = 1; i < matrix.getSize(); i++) {
-        weights = matrix[cur];
+    while(!unvisited.empty()) {
+        // Update tour
+        tour.addVertex(cur);
+        unvisited.remove(cur);
 
         // Find next vertex
         cur = *std::min_element(
-                  unvisited.begin(),
-                  unvisited.end(),
-                  [&weights](int v1, int v2) -> bool {
-                      if (weights[v1] < weights[v2]) {
-                          return true;
-                      }
-                      else {
-                          return false;
-                      }
-                  }
+            unvisited.begin(),
+            unvisited.end(),
+            [&adjacencyMatrix, cur](int v1, int v2) -> bool
+            {
+                if (adjacencyMatrix[cur][v1] < adjacencyMatrix[cur][v2]) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
         );
-
-        // Update path and list of unvisited vertices
-        path[i] = cur;
-        unvisited.remove(cur);
     }
 
-    return TspResult {
-        .length = computeLength(path, matrix),
-        .iterations = matrix.getSize(),
-        .path = path
+    tour.close();
+
+    return TspResult{
+        .iterations = adjacencyMatrix.getSize(),
+        .tour = tour
     };
 }

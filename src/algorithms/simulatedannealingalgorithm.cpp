@@ -28,56 +28,42 @@ std::vector<Parameter*> SimulatedAnnealingAlgorithm::getParameters()
     return parameters;
 }
 
-TspResult SimulatedAnnealingAlgorithm::execute(const AdjacencyMatrix &matrix)
+TspResult SimulatedAnnealingAlgorithm::execute(const Matrix &adjacencyMatrix)
 {
-    // Generate initial path
-    std::vector<int> curPath = RandomGenerator::generateSet(
-                                   matrix.getSize(),
-                                   0,
-                                   matrix.getSize() - 1
-                                   );
-    curPath.push_back(curPath[0]);
+    // Generate initial tour
+    Tour cur(adjacencyMatrix);
+    cur.generate(adjacencyMatrix.getSize());
+    cur.close();
 
-    std::vector<int> nextPath;
-    int ind1, ind2;
-    int delta;
-    double chance;
+    Tour next(adjacencyMatrix);
+    int iterations = 0;
+    double delta;
     bool action;
     double t = m_maxt;
-    int iteratons = 0;
     while (t > m_mint) {
-        // Generate begin and end of reversing range
-        ind1 = RandomGenerator::generateInt(0, matrix.getSize() - 2);
-        ind2 = RandomGenerator::generateInt(0, matrix.getSize() - 2);
-        if (ind1 > ind2) {
-            std::swap(ind1, ind2);
-        }
+        // Generate next tour
+        next = cur;
+        next.generateInverse();
+        next.closeLast();
 
-        // Reverse generated range of the path
-        nextPath = curPath;
-        std::reverse(nextPath.begin() + ind1, nextPath.begin() + ind2 + 1);
-        nextPath.back() = nextPath.front();
-
-        // Generate action
-        delta = computeLength(nextPath, matrix) - computeLength(curPath, matrix);
-        if (delta <= 0) {
-            curPath = nextPath;
+        // Attempt to update current tour
+        if (next < cur) {
+            cur = next;
         }
         else {
-            chance = exp(-delta/t);
-            action = RandomGenerator::generateAction(chance);
+            delta = next.computeLength() - cur.computeLength();
+            action = RandomGenerator::generateAction(exp(-delta/t));
             if (action) {
-                curPath = nextPath;
+                cur = next;
             }
         }
 
         t *= m_coolingFactor;
-        iteratons++;
+        iterations++;
     }
 
-    return TspResult {
-        .length = computeLength(curPath, matrix),
-        .iterations = iteratons,
-        .path = curPath
+    return TspResult{
+        .iterations = iterations,
+        .tour = cur
     };
 }

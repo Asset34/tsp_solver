@@ -13,7 +13,7 @@ public:
     virtual std::string getName() const override;
     virtual std::vector<Parameter*> getParameters() override;
 
-    virtual TspResult execute(const AdjacencyMatrix &matrix) override;
+    virtual TspResult execute(const Matrix &adjacencyMatrix) override;
 
 private:
     IntParameter m_start;
