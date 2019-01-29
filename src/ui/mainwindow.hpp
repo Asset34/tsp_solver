@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <QString>
+
 class QLabel;
 class TspSolverWidget;
 
@@ -17,8 +19,7 @@ private:
     TspSolverWidget *m_solverWidget;
 
 private slots:
-    void indicateStart();
-    void indicateFinish();
+    void indicateSolverStatus(QString status);
 
 };
 

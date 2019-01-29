@@ -12,16 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(m_solverWidget);
     setContentsMargins(5, 5, 5, 5);
 
-    connect(m_solverWidget, &TspSolverWidget::solvingStarted, this, &MainWindow::indicateStart);
-    connect(m_solverWidget, &TspSolverWidget::solvingFinished, this, &MainWindow::indicateFinish);
+    connect(m_solverWidget, &TspSolverWidget::statusChanged, this, &MainWindow::indicateSolverStatus);
 }
 
-void MainWindow::indicateStart()
+void MainWindow::indicateSolverStatus(QString status)
 {
-    statusBar()->showMessage("Solving...");
-}
-
-void MainWindow::indicateFinish()
-{
-    statusBar()->clearMessage();
+    statusBar()->showMessage(status);
 }

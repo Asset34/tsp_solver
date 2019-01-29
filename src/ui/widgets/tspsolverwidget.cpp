@@ -67,13 +67,18 @@ void TspSolverWidget::clear()
 
 void TspSolverWidget::solve()
 {
-    emit solvingStarted();
+    emit statusChanged("Solving...");
 
     Matrix matrix = m_graphDrawerWidget->getMatrix();
-    TspResult result = m_algorithmWidget->execute(matrix);
+    if (matrix.isEmpty()) {
+        emit statusChanged("Incorrect input");
+    }
+    else {
+        TspResult result = m_algorithmWidget->execute(matrix);
 
-    m_resultWidget->setResult(result);
-    m_graphDrawerWidget->setTour(result.tour);
+        m_resultWidget->setResult(result);
+        m_graphDrawerWidget->setTour(result.tour);
 
-    emit solvingFinished();
+        emit statusChanged("Success");
+    }
 }

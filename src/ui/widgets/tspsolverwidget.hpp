@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include <QString>
+
 class QHBoxLayout;
 class QVBoxLayout;
 class QFrame;
@@ -36,8 +38,7 @@ private:
     TspResultWidget *m_resultWidget;
 
 signals:
-    void solvingStarted();
-    void solvingFinished();
+    void statusChanged(QString status);
 
 };
 
