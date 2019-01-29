@@ -5,8 +5,8 @@
 
 #include "tspalgorithm.hpp"
 
-#include <parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.hpp>
-#include <parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.hpp>
+#include <parameterized_algorithm_qt/core/parameters/intparameter.hpp>
+#include <parameterized_algorithm_qt/core/parameters/realparameter.hpp>
 
 class AntColonyAlgorithm : public TspAlgorithm
 {

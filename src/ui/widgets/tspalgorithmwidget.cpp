@@ -4,25 +4,24 @@
 
 #include <QGroupBox>
 
-#include <ui/boxes/tspalgorithmselectbox.hpp>
+#include <memory>
+
+#include <parameterized_algorithm_qt/widgets/algorithmwidget.hpp>
 #include <ui/widgets/tspresultwidget.hpp>
-#include <parameter_list_widget/parameterlistwidget.hpp>
+
+#include <algorithms/nearestneighbouralgorithm.hpp>
+#include <algorithms/simulatedannealingalgorithm.hpp>
+#include <algorithms/antcolonyalgorithm.hpp>
 
 TspAlgorithmWidget::TspAlgorithmWidget(QWidget *parent)
     : QWidget(parent)
 {
-    m_algorithmSelectBox = new TspAlgorithmSelectBox;
-
-    // Set default algorithm
-    m_currentAlgorithm = m_algorithmSelectBox->getAlgorithm();
-
-    // Create parameter list widget with appropriate QGroupBox and QLayout
-    m_parameterListWidget = new ParameterListWidget;
-    m_parameterListWidget->updateWith(*m_currentAlgorithm);
+    // Create algorithm widget with appropriate groupbox and layout
+    m_algorithmWidget = new AlgorithmWidget;
     QGroupBox *inputGroupBox = new QGroupBox("Input");
     QVBoxLayout *inputLayout = new QVBoxLayout;
     inputLayout->setContentsMargins(5, 0, 5, 5);
-    inputLayout->addWidget(m_parameterListWidget);
+    inputLayout->addWidget(m_algorithmWidget);
     inputGroupBox->setLayout(inputLayout);
 
     // Create result widget with appropriate QGroupBox and QLayout
@@ -35,30 +34,21 @@ TspAlgorithmWidget::TspAlgorithmWidget(QWidget *parent)
 
     m_layout = new QVBoxLayout;
     m_layout->setContentsMargins(0, 0, 0, 0);
-    m_layout->addWidget(m_algorithmSelectBox);
     m_layout->addWidget(inputGroupBox);
     m_layout->addWidget(resultGroupBox);
 
     setLayout(m_layout);
 
-    connect(
-        m_algorithmSelectBox,
-        &TspAlgorithmSelectBox::algorithmChanged,
-        this,
-        &TspAlgorithmWidget::changeAlgorithm
-        );
+    // Add algorithms
+    m_algorithmWidget->addAlgorithm(std::unique_ptr<Algorithm>(new NearestNeighbourAlgorithm)  );
+    m_algorithmWidget->addAlgorithm(std::unique_ptr<Algorithm>(new SimulatedAnnealingAlgorithm));
+    m_algorithmWidget->addAlgorithm(std::unique_ptr<Algorithm>(new AntColonyAlgorithm)         );
 }
 
 TspResult TspAlgorithmWidget::execute(const Matrix &adjacencyMatrix)
 {
-    TspResult result = m_currentAlgorithm->execute(adjacencyMatrix);
-    m_resultWidget->setResult(result);
+//    TspResult result = m_currentAlgorithm->execute(adjacencyMatrix);
+//    m_resultWidget->setResult(result);
 
-    return result;
-}
-
-void TspAlgorithmWidget::changeAlgorithm(TspAlgorithm *algorithm)
-{
-    m_currentAlgorithm = algorithm;
-    m_parameterListWidget->updateWith(*algorithm);
+//    return result;
 }

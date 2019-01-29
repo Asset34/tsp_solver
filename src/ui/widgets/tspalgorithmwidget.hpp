@@ -3,13 +3,11 @@
 
 #include <QWidget>
 
+#include <matrix.hpp>
 #include <algorithms/tspalgorithm.hpp>
 
-#include <matrix.hpp>
-
 class QVBoxLayout;
-class TspAlgorithmSelectBox;
-class ParameterListWidget;
+class AlgorithmWidget;
 class TspResultWidget;
 
 class TspAlgorithmWidget : public QWidget
@@ -24,14 +22,8 @@ public:
 private:
     QVBoxLayout *m_layout;
 
-    TspAlgorithmSelectBox *m_algorithmSelectBox;
-    ParameterListWidget *m_parameterListWidget;
+    AlgorithmWidget *m_algorithmWidget;
     TspResultWidget *m_resultWidget;
-
-    TspAlgorithm *m_currentAlgorithm;
-
-private slots:
-    void changeAlgorithm(TspAlgorithm *algorithm);
 
 };
 

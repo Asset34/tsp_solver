@@ -1,3 +1,3 @@
-[submodule "src/parameter_list_widget"]
-	path = src/parameter_list_widget
-	url = git@github.com:Asset34/parameter_list_widget
+[submodule "src/parameterized_algorithm_qt"]
+	path = src/parameterized_algorithm_qt
+	url = git@github.com:asset34/parameterized_algorithm_qt

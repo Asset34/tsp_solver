@@ -3,7 +3,7 @@
 
 #include "algorithms/tspalgorithm.hpp"
 
-#include <parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.hpp>
+#include <parameterized_algorithm_qt/core/parameters/intparameter.hpp>
 
 class NearestNeighbourAlgorithm : public TspAlgorithm
 {

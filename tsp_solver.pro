@@ -36,19 +36,20 @@ SOURCES += \
     src/ui/widgets/graph_drawer/graphdrawer.cpp \
     src/ui/widgets/graph_drawer/graphdrawerwidget.cpp \
     src/ui/widgets/graph_drawer/scrollablegraphdrawer.cpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.cpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.cpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.cpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.cpp \
-    src/parameter_list_widget/guicreatingvisitor.cpp \
-    src/parameter_list_widget/parameterlistwidget.cpp \
-    src/ui/boxes/tspalgorithmselectbox.cpp \
     src/ui/widgets/tspalgorithmwidget.cpp \
     src/ui/widgets/tspresultwidget.cpp \
     src/ui/widgets/tspsolverwidget.cpp \
     src/matrix.cpp \
     src/tour.cpp \
-    src/algorithms/ant.cpp
+    src/algorithms/ant.cpp \
+    src/parameterized_algorithm_qt/core/parameters/flagparameter.cpp \
+    src/parameterized_algorithm_qt/core/parameters/intparameter.cpp \
+    src/parameterized_algorithm_qt/core/parameters/parameter.cpp \
+    src/parameterized_algorithm_qt/core/parameters/realparameter.cpp \
+    src/parameterized_algorithm_qt/widgets/algorithmselector.cpp \
+    src/parameterized_algorithm_qt/widgets/algorithmwidget.cpp \
+    src/parameterized_algorithm_qt/widgets/guicreatingvisitor.cpp \
+    src/parameterized_algorithm_qt/widgets/parameterlistwidget.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -60,19 +61,20 @@ HEADERS += \
     src/ui/widgets/graph_drawer/graphdrawer.hpp \
     src/ui/widgets/graph_drawer/graphdrawerwidget.hpp \
     src/ui/widgets/graph_drawer/scrollablegraphdrawer.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/flagparameter.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/intparameter.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/parameter.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/Parameters/realparameter.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/algorithm.hpp \
-    src/parameter_list_widget/parameterized_algorithm_base/parametervisitor.hpp \
-    src/parameter_list_widget/guicreatingvisitor.hpp \
-    src/parameter_list_widget/parameterlistwidget.hpp \
-    src/ui/boxes/tspalgorithmselectbox.hpp \
     src/ui/widgets/tspalgorithmwidget.hpp \
     src/ui/widgets/tspresultwidget.hpp \
     src/ui/widgets/tspsolverwidget.hpp \
     src/matrix.hpp \
-    src/tour.hpp
+    src/tour.hpp \
+    src/parameterized_algorithm_qt/core/parameters/flagparameter.hpp \
+    src/parameterized_algorithm_qt/core/parameters/intparameter.hpp \
+    src/parameterized_algorithm_qt/core/parameters/parameter.hpp \
+    src/parameterized_algorithm_qt/core/parameters/realparameter.hpp \
+    src/parameterized_algorithm_qt/core/algorithm.hpp \
+    src/parameterized_algorithm_qt/core/parametervisitor.hpp \
+    src/parameterized_algorithm_qt/widgets/algorithmselector.hpp \
+    src/parameterized_algorithm_qt/widgets/algorithmwidget.hpp \
+    src/parameterized_algorithm_qt/widgets/guicreatingvisitor.hpp \
+    src/parameterized_algorithm_qt/widgets/parameterlistwidget.hpp
 
 INCLUDEPATH += $$PWD/src
