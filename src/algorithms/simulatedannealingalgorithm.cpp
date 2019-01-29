@@ -4,8 +4,6 @@
 
 #include <utills/randomgenerator.hpp>
 
-#include <QDebug>
-
 SimulatedAnnealingAlgorithm::SimulatedAnnealingAlgorithm()
     : m_maxt("Max T", 0.0, 1e9, 100.0),
       m_mint("Min T", 0.0, 1e9, 1.0),
