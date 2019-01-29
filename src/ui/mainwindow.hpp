@@ -12,8 +12,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
 
+public slots:
+    void solve();
+
 private:
-    TspSolverWidget *m_tspSolverWidget;
+    TspSolverWidget *m_solverWidget;
 
 };
 
