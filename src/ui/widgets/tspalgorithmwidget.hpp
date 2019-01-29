@@ -1,16 +1,10 @@
 #ifndef TSPALGORITHMWIDGET_HPP
 #define TSPALGORITHMWIDGET_HPP
 
-#include <QWidget>
-
-#include <matrix.hpp>
 #include <algorithms/tspalgorithm.hpp>
+#include <parameterized_algorithm_qt/widgets/algorithmwidget.hpp>
 
-class QVBoxLayout;
-class AlgorithmWidget;
-class TspResultWidget;
-
-class TspAlgorithmWidget : public QWidget
+class TspAlgorithmWidget : public AlgorithmWidget
 {
     Q_OBJECT
 
@@ -18,12 +12,6 @@ public:
     explicit TspAlgorithmWidget(QWidget *parent = nullptr);
 
     TspResult execute(const Matrix &adjacencyMatrix);
-
-private:
-    QVBoxLayout *m_layout;
-
-    AlgorithmWidget *m_algorithmWidget;
-    TspResultWidget *m_resultWidget;
 
 };
 
