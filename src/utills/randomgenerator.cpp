@@ -4,9 +4,9 @@
 #include <numeric>
 #include <chrono>
 
-//std::default_random_engine RandomGenerator::m_engine(
-//        std::chrono::system_clock::now().time_since_epoch().count()
-//        );
+std::default_random_engine RandomGenerator::m_engine(
+        std::chrono::system_clock::now().time_since_epoch().count()
+        );
 
 std::default_random_engine RandomGenerator::m_engine;
 std::uniform_int_distribution<int> RandomGenerator::m_boolDistr(0, 1);
