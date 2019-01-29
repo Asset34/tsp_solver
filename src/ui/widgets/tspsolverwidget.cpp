@@ -2,6 +2,7 @@
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QPushButton>
 #include <QFrame>
 
 #include <memory>
@@ -27,19 +28,22 @@ TspSolverWidget::TspSolverWidget(QWidget *parent)
     m_algorithmWidget->addAlgorithm(std::unique_ptr<Algorithm>(new SimulatedAnnealingAlgorithm));
     m_algorithmWidget->addAlgorithm(std::unique_ptr<Algorithm>(new AntColonyAlgorithm));
 
+    m_separator = new QFrame;
+    m_separator->setFrameShape(QFrame::HLine);
+    m_separator->setFrameShadow(QFrame::Raised);
+
     m_resultWidget = new TspResultWidget;
     m_resultWidget->setFixedWidth(250);
     m_resultWidget->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
 
-    QFrame *separator = new QFrame;
-    separator->setFrameShape(QFrame::HLine);
-    separator->setFrameShadow(QFrame::Raised);
+    m_solveButon = new QPushButton("Solve");
 
     m_panelsLayout = new QVBoxLayout;
     m_panelsLayout->setContentsMargins(0, 0, 0, 0);
     m_panelsLayout->addWidget(m_algorithmWidget);
-    m_panelsLayout->addWidget(separator);
+    m_panelsLayout->addWidget(m_separator);
     m_panelsLayout->addWidget(m_resultWidget);
+    m_panelsLayout->addWidget(m_solveButon);
 
     m_mainlayout = new QHBoxLayout;
     m_mainlayout->setContentsMargins(0, 0, 0, 0);
@@ -47,6 +51,8 @@ TspSolverWidget::TspSolverWidget(QWidget *parent)
     m_mainlayout->addLayout(m_panelsLayout);
 
     setLayout(m_mainlayout);
+
+    connect(m_solveButon, &QPushButton::clicked, this, &TspSolverWidget::solve);
 }
 
 void TspSolverWidget::generate()
@@ -64,5 +70,6 @@ void TspSolverWidget::solve()
     Matrix matrix = m_graphDrawerWidget->getMatrix();
     TspResult result = m_algorithmWidget->execute(matrix);
 
+    m_resultWidget->setResult(result);
     m_graphDrawerWidget->setTour(result.tour);
 }

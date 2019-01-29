@@ -5,8 +5,8 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    m_tspSolverWidget = new TspSolverWidget;
+    m_solverWidget = new TspSolverWidget;
 
-    setCentralWidget(m_tspSolverWidget);
+    setCentralWidget(m_solverWidget);
     setContentsMargins(5, 5, 5, 5);
 }

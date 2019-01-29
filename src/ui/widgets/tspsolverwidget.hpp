@@ -5,6 +5,8 @@
 
 class QHBoxLayout;
 class QVBoxLayout;
+class QFrame;
+class QPushButton;
 class GraphDrawerWidget;
 class TspAlgorithmWidget;
 class TspResultWidget;
@@ -24,6 +26,10 @@ public slots:
 private:
     QHBoxLayout *m_mainlayout;
     QVBoxLayout *m_panelsLayout;
+
+    QFrame *m_separator;
+
+    QPushButton *m_solveButon;
 
     GraphDrawerWidget *m_graphDrawerWidget;
     TspAlgorithmWidget *m_algorithmWidget;

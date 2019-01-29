@@ -13,7 +13,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
 
 private:
-    TspSolverWidget *m_tspSolverWidget;
+    TspSolverWidget *m_solverWidget;
 
 };
 
