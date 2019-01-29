@@ -17,10 +17,9 @@ std::string NearestNeighbourAlgorithm::getName() const
 
 std::vector<Parameter*> NearestNeighbourAlgorithm::getParameters()
 {
-    std::vector<Parameter*> parameters(1);
-    parameters[0] = &m_start;
-
-    return parameters;
+    return {
+        &m_start
+    };
 }
 
 TspResult NearestNeighbourAlgorithm::execute(const Matrix &adjacencyMatrix)

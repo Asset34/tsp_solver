@@ -20,12 +20,11 @@ std::string SimulatedAnnealingAlgorithm::getName() const
 
 std::vector<Parameter*> SimulatedAnnealingAlgorithm::getParameters()
 {
-    std::vector<Parameter*> parameters(3);
-    parameters[0] = &m_maxt;
-    parameters[1] = &m_mint;
-    parameters[2] = &m_coolingFactor;
-
-    return parameters;
+    return {
+        &m_maxt,
+        &m_mint,
+        &m_coolingFactor
+    };
 }
 
 TspResult SimulatedAnnealingAlgorithm::execute(const Matrix &adjacencyMatrix)

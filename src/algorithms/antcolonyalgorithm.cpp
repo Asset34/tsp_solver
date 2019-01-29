@@ -21,14 +21,13 @@ std::string AntColonyAlgorithm::getName() const
 
 std::vector<Parameter*> AntColonyAlgorithm::getParameters()
 {
-    std::vector<Parameter*> parameters(5);
-    parameters[0] = &m_iterations;
-    parameters[1] = &m_antCount;
-    parameters[2] = &m_evaporateFactor;
-    parameters[3] = &m_alpha;
-    parameters[4] = &m_beta;
-
-    return parameters;
+    return {
+        &m_iterations,
+        &m_antCount,
+        &m_evaporateFactor,
+        &m_alpha,
+        &m_beta
+    };
 }
 
 TspResult AntColonyAlgorithm::execute(const Matrix &adjacencyMatrix)
