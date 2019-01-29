@@ -5,9 +5,11 @@
 
 class QHBoxLayout;
 class QVBoxLayout;
+class QFrame;
 class QPushButton;
 class GraphDrawerWidget;
 class TspAlgorithmWidget;
+class TspResultWidget;
 
 class TspSolverWidget : public QWidget
 {
@@ -23,12 +25,15 @@ public slots:
 
 private:
     QHBoxLayout *m_mainlayout;
-    QVBoxLayout *m_algorithmLayout;
+    QVBoxLayout *m_panelsLayout;
 
-    QPushButton *m_solveButton;
+    QFrame *m_separator;
+
+    QPushButton *m_solveButon;
 
     GraphDrawerWidget *m_graphDrawerWidget;
     TspAlgorithmWidget *m_algorithmWidget;
+    TspResultWidget *m_resultWidget;
 
 };
 
