@@ -24,6 +24,11 @@ int Matrix::getSize() const
     return m_data.size();
 }
 
+bool Matrix::isEmpty() const
+{
+    return m_data.empty();
+}
+
 void Matrix::multiply(double scalar)
 {
     for (int i = 0; i < getSize(); i++) {

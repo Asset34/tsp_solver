@@ -12,6 +12,7 @@ public:
     std::vector<double> &operator[](int row);
 
     int getSize() const;
+    bool isEmpty() const;
 
     void multiply(double scalar);
 
