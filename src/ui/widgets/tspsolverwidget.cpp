@@ -67,9 +67,13 @@ void TspSolverWidget::clear()
 
 void TspSolverWidget::solve()
 {
+    emit solvingStarted();
+
     Matrix matrix = m_graphDrawerWidget->getMatrix();
     TspResult result = m_algorithmWidget->execute(matrix);
 
     m_resultWidget->setResult(result);
     m_graphDrawerWidget->setTour(result.tour);
+
+    emit solvingFinished();
 }

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+class QLabel;
 class TspSolverWidget;
 
 class MainWindow : public QMainWindow
@@ -14,6 +15,10 @@ public:
 
 private:
     TspSolverWidget *m_solverWidget;
+
+private slots:
+    void indicateStart();
+    void indicateFinish();
 
 };
 

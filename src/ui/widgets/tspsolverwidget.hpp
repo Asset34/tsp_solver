@@ -35,6 +35,10 @@ private:
     TspAlgorithmWidget *m_algorithmWidget;
     TspResultWidget *m_resultWidget;
 
+signals:
+    void solvingStarted();
+    void solvingFinished();
+
 };
 
 #endif // TSPSOLVERWIDGET_HPP
