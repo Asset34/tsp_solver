@@ -13,8 +13,8 @@ TspResultWidget::TspResultWidget(QWidget *parent)
 
     m_valuesLayout = new QFormLayout;
     m_valuesLayout->setContentsMargins(0, 0, 0, 0);
-    m_valuesLayout->addRow("Length:", m_lengthLabel);
     m_valuesLayout->addRow("Iterations:", m_iterationsLabel);
+    m_valuesLayout->addRow("Length:", m_lengthLabel);
 
     m_pathTextEdit = new QTextEdit;
     m_pathTextEdit->setWordWrapMode(QTextOption::WordWrap);
@@ -30,7 +30,7 @@ TspResultWidget::TspResultWidget(QWidget *parent)
 
 void TspResultWidget::setResult(const TspResult &result)
 {
-    m_lengthLabel->setText(QString::number(result.tour.computeLength()));
     m_iterationsLabel->setText(QString::number(result.iterations));
+    m_lengthLabel->setText(QString::number(result.tour.computeLength()));
     m_pathTextEdit->setText(QString::fromStdString(result.tour.toString()));
 }

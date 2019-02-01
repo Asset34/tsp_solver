@@ -23,8 +23,8 @@ private:
     QVBoxLayout *m_mainLayout;
     QFormLayout *m_valuesLayout;
 
-    QLabel *m_lengthLabel;
     QLabel *m_iterationsLabel;
+    QLabel *m_lengthLabel;
 
     QTextEdit *m_pathTextEdit;
 
